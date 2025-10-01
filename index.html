@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information | NBD Drinks</title>
+    <title>Product Information | NoBullshitDrinks</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -27,48 +23,45 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 500px;
             width: 100%;
-            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         
         .header {
             background: linear-gradient(135deg, #2C5F7D 0%, #4A90B8 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 30px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 40px 30px;
-        }
-        
-        .language-selector {
-            display: none;
-        }
-        
-        .language-selector.active {
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .language-btn {
+        .header h1 { font-size: 26px; margin-bottom: 8px; font-weight: 700; }
+        .header p { font-size: 14px; opacity: 0.9; }
+        .content { padding: 30px; }
+        
+        .selector { display: none; }
+        .selector.active { display: block; animation: fadeIn 0.3s ease; }
+        
+        .selector-btn {
             display: block;
             width: 100%;
-            padding: 18px;
-            margin: 12px 0;
+            padding: 14px;
+            margin: 8px 0;
             background: white;
             border: 2px solid #2C5F7D;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 600;
             color: #2C5F7D;
             cursor: pointer;
@@ -76,450 +69,385 @@
             text-align: left;
         }
         
-        .language-btn:hover {
+        .selector-btn:hover {
             background: #2C5F7D;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44, 95, 125, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 95, 125, 0.3);
         }
         
-        .language-btn::before {
-            content: "🌍 ";
-            margin-right: 10px;
-        }
+        .selector-btn.lang::before { content: "🌍 "; margin-right: 8px; }
+        .selector-btn.product::before { content: "💧 "; margin-right: 8px; }
         
-        .info-content {
-            display: none;
-        }
-        
-        .info-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+        .info-content { display: none; }
+        .info-content.active { display: block; animation: fadeIn 0.4s ease; }
         
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .back-btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 16px;
             background: #f0f0f0;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 20px;
-            font-size: 14px;
+            margin-bottom: 16px;
+            font-size: 13px;
             color: #333;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
-        .back-btn:hover {
-            background: #e0e0e0;
-        }
+        .back-btn:hover { background: #e0e0e0; }
         
         .info-section {
-            margin-bottom: 25px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 16px;
             background: #f8f9fa;
-            border-radius: 12px;
+            border-radius: 10px;
             border-left: 4px solid #2C5F7D;
         }
         
         .info-section h2 {
             color: #2C5F7D;
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 12px;
         }
         
         .info-section p {
             color: #555;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
         
         .info-section ul {
-            margin-left: 20px;
+            margin-left: 18px;
             color: #555;
-            line-height: 1.8;
+            line-height: 1.7;
+            font-size: 14px;
         }
         
-        .info-section strong {
-            color: #2C5F7D;
-        }
+        .info-section strong { color: #2C5F7D; }
         
         .footer {
             text-align: center;
             padding: 20px;
             background: #f8f9fa;
             color: #666;
-            font-size: 14px;
+            font-size: 13px;
         }
         
-        .product-badge {
-            display: inline-block;
-            background: #7FB069;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 5px 5px 5px 0;
+        .section-title {
+            text-align: center;
+            font-size: 20px;
+            color: #2C5F7D;
+            margin-bottom: 16px;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>NBD Product Information</h1>
-            <p>Select your language | Seleziona la lingua | Seleccione el idioma</p>
+            <img src="logo.png" alt="NoBullshitDrinks" class="logo" onerror="this.style.display='none'">
+            <h1>NoBullshitDrinks</h1>
+            <p>Transparent. Honest. No BS.</p>
         </div>
         
         <div class="content">
-            <!-- Language Selection -->
-            <div id="languageSelector" class="language-selector active">
-                <button class="language-btn" onclick="showInfo('it')">Italiano (Italia)</button>
-                <button class="language-btn" onclick="showInfo('es')">Español (España)</button>
-                <button class="language-btn" onclick="showInfo('fr')">Français (France)</button>
-                <button class="language-btn" onclick="showInfo('en')">English (UK)</button>
-                <button class="language-btn" onclick="showInfo('de')">Deutsch (Deutschland)</button>
-                <button class="language-btn" onclick="showInfo('pt')">Português (Portugal)</button>
+            <div id="languageSelector" class="selector active">
+                <div class="section-title">Select Your Language</div>
+                <button class="selector-btn lang" onclick="selectLanguage('en')">English</button>
+                <button class="selector-btn lang" onclick="selectLanguage('fr')">Français</button>
+                <button class="selector-btn lang" onclick="selectLanguage('es')">Español</button>
+                <button class="selector-btn lang" onclick="selectLanguage('it')">Italiano</button>
+                <button class="selector-btn lang" onclick="selectLanguage('de')">Deutsch</button>
+                <button class="selector-btn lang" onclick="selectLanguage('pt')">Português</button>
             </div>
             
-            <!-- Italian Content -->
-            <div id="info-it" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Torna alla selezione lingua</button>
-                
-                <div class="info-section">
-                    <h2>📋 Informazioni Nutrizionali Akvile Beauty Water</h2>
-                    <p><strong>Valori nutrizionali per 100ml:</strong></p>
-                    <ul>
-                        <li>Energia: 8 kcal / 34 kJ</li>
-                        <li>Grassi: 0g (di cui acidi grassi saturi: 0g)</li>
-                        <li>Carboidrati: 0,5g (di cui zuccheri: 0g)</li>
-                        <li>Proteine: 0,8g (collagene marino: 0,83g)</li>
-                        <li>Sale: 0,01g</li>
-                    </ul>
-                    <p><strong>Per bottiglia (600ml):</strong> 5g di collagene marino + 60mg vitamina C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Ingredienti</h2>
-                    <p>Acqua minerale naturale, collagene marino idrolizzato (peptidi di collagene da pesce), vitamina C (acido L-ascorbico), aromi naturali, conservanti: sorbato di potassio, acido citrico (regolatore di acidità).</p>
-                    <p><strong>Allergeni:</strong> Contiene <strong>pesce</strong> (collagene marino)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Informazioni sul Prodotto</h2>
-                    <p><strong>Origine:</strong> Prodotto in Lituania secondo standard UE</p>
-                    <p><strong>Conservazione:</strong> Conservare in luogo fresco e asciutto, lontano dalla luce diretta del sole. Dopo l'apertura, conservare in frigorifero e consumare entro 24 ore.</p>
-                    <p><strong>Da consumarsi preferibilmente entro:</strong> Vedere la data sulla bottiglia</p>
-                    <p><strong>Contenuto netto:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Avvertenze</h2>
-                    <ul>
-                        <li>Gli integratori non sostituiscono una dieta variata ed equilibrata</li>
-                        <li>Non superare la dose giornaliera consigliata</li>
-                        <li>Tenere fuori dalla portata dei bambini</li>
-                        <li>Consultare un medico in caso di gravidanza o allattamento</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Informazioni sull'Azienda</h2>
-                    <p><strong>Distribuito da:</strong> [Your Company Name]</p>
-                    <p><strong>Indirizzo:</strong> [Your EU Address]</p>
-                    <p><strong>Contatto:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Sito web:</strong> www.nbddrinks.eu</p>
-                </div>
+            <div id="productSelector" class="selector">
+                <button class="back-btn" onclick="showLanguageSelector()">← Back</button>
+                <div class="section-title" id="productSelectorTitle">Select Your Product</div>
+                <button class="selector-btn product" onclick="showProduct('beauty')">Akvile Beauty Water 0.6L</button>
+                <button class="selector-btn product" onclick="showProduct('digestive')">Akvile Digestive Water 0.6L</button>
+                <button class="selector-btn product" onclick="showProduct('greentea')">Akvile Pre+Post Green Tea 0.6L</button>
+                <button class="selector-btn product" onclick="showProduct('vossplus')">Voss Plus 0.5L</button>
+                <button class="selector-btn product" onclick="showProduct('lemon')">Akvile Lemon Sparkling</button>
+                <button class="selector-btn product" onclick="showProduct('lime')">Akvile Tahiti Lime Sparkling</button>
+                <button class="selector-btn product" onclick="showProduct('peach')">Akvile Peach Sparkling</button>
+                <button class="selector-btn product" onclick="showProduct('berry')">Akvile Red Berry Sparkling</button>
+                <button class="selector-btn product" onclick="showProduct('orange')">Akvile Orange Sparkling</button>
+                <button class="selector-btn product" onclick="showProduct('voss-strawberry')">Voss Strawberry Ginger 0.33L</button>
+                <button class="selector-btn product" onclick="showProduct('voss-lime')">Voss Lime Mint 0.33L</button>
+                <button class="selector-btn product" onclick="showProduct('voss-lemon')">Voss Lemon Cucumber 0.33L</button>
+                <button class="selector-btn product" onclick="showProduct('josephine-lemon')">Josephine Lemon & Rose 0.33L</button>
+                <button class="selector-btn product" onclick="showProduct('josephine-plum')">Josephine Mirabelle Plum 0.33L</button>
+                <button class="selector-btn product" onclick="showProduct('josephine-blueberry')">Josephine Blueberry & Linden 0.33L</button>
             </div>
             
-            <!-- Spanish Content -->
-            <div id="info-es" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Volver a selección de idioma</button>
-                
-                <div class="info-section">
-                    <h2>📋 Información Nutricional Akvile Beauty Water</h2>
-                    <p><strong>Valores nutricionales por 100ml:</strong></p>
-                    <ul>
-                        <li>Energía: 8 kcal / 34 kJ</li>
-                        <li>Grasas: 0g (de las cuales saturadas: 0g)</li>
-                        <li>Hidratos de carbono: 0,5g (de los cuales azúcares: 0g)</li>
-                        <li>Proteínas: 0,8g (colágeno marino: 0,83g)</li>
-                        <li>Sal: 0,01g</li>
-                    </ul>
-                    <p><strong>Por botella (600ml):</strong> 5g de colágeno marino + 60mg vitamina C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Ingredientes</h2>
-                    <p>Agua mineral natural, colágeno marino hidrolizado (péptidos de colágeno de pescado), vitamina C (ácido L-ascórbico), aromas naturales, conservantes: sorbato de potasio, ácido cítrico (regulador de acidez).</p>
-                    <p><strong>Alérgenos:</strong> Contiene <strong>pescado</strong> (colágeno marino)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Información del Producto</h2>
-                    <p><strong>Origen:</strong> Elaborado en Lituania según estándares UE</p>
-                    <p><strong>Conservación:</strong> Conservar en lugar fresco y seco, alejado de la luz solar directa. Después de abrir, conservar en el frigorífico y consumir en 24 horas.</p>
-                    <p><strong>Consumir preferentemente antes de:</strong> Ver fecha en la botella</p>
-                    <p><strong>Contenido neto:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Advertencias</h2>
-                    <ul>
-                        <li>Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada</li>
-                        <li>No superar la dosis diaria recomendada</li>
-                        <li>Mantener fuera del alcance de los niños</li>
-                        <li>Consultar con un médico en caso de embarazo o lactancia</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>♻️ Información de Reciclaje (Real Decreto 1055/2022)</h2>
-                    <p><strong>Botella PET:</strong> Depositar en contenedor amarillo (envases)</p>
-                    <p><strong>Tapón de plástico:</strong> Depositar en contenedor amarillo</p>
-                    <p><strong>Etiqueta:</strong> Depositar en contenedor amarillo</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Información de la Empresa</h2>
-                    <p><strong>Distribuido por:</strong> [Your Company Name]</p>
-                    <p><strong>Dirección:</strong> [Your EU Address]</p>
-                    <p><strong>Contacto:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Sitio web:</strong> www.nbddrinks.eu</p>
-                </div>
-            </div>
-            
-            <!-- French Content -->
-            <div id="info-fr" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Retour à la sélection de langue</button>
-                
-                <div class="info-section">
-                    <h2>📋 Informations Nutritionnelles Akvile Beauty Water</h2>
-                    <p><strong>Valeurs nutritionnelles pour 100ml:</strong></p>
-                    <ul>
-                        <li>Énergie: 8 kcal / 34 kJ</li>
-                        <li>Matières grasses: 0g (dont acides gras saturés: 0g)</li>
-                        <li>Glucides: 0,5g (dont sucres: 0g)</li>
-                        <li>Protéines: 0,8g (collagène marin: 0,83g)</li>
-                        <li>Sel: 0,01g</li>
-                    </ul>
-                    <p><strong>Par bouteille (600ml):</strong> 5g de collagène marin + 60mg vitamine C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Ingrédients</h2>
-                    <p>Eau minérale naturelle, collagène marin hydrolysé (peptides de collagène de poisson), vitamine C (acide L-ascorbique), arômes naturels, conservateurs: sorbate de potassium, acide citrique (régulateur d'acidité).</p>
-                    <p><strong>Allergènes:</strong> Contient du <strong>poisson</strong> (collagène marin)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Informations Produit</h2>
-                    <p><strong>Origine:</strong> Fabriqué en Lituanie selon les normes UE</p>
-                    <p><strong>Conservation:</strong> À conserver dans un endroit frais et sec, à l'abri de la lumière directe du soleil. Après ouverture, conserver au réfrigérateur et consommer dans les 24 heures.</p>
-                    <p><strong>À consommer de préférence avant:</strong> Voir date sur la bouteille</p>
-                    <p><strong>Contenu net:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Avertissements</h2>
-                    <ul>
-                        <li>Les compléments alimentaires ne se substituent pas à une alimentation variée et équilibrée</li>
-                        <li>Ne pas dépasser la dose journalière recommandée</li>
-                        <li>Tenir hors de portée des enfants</li>
-                        <li>Consulter un médecin en cas de grossesse ou d'allaitement</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Informations Société</h2>
-                    <p><strong>Distribué par:</strong> [Your Company Name]</p>
-                    <p><strong>Adresse:</strong> [Your EU Address]</p>
-                    <p><strong>Contact:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Site web:</strong> www.nbddrinks.eu</p>
-                </div>
-            </div>
-            
-            <!-- English Content -->
-            <div id="info-en" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Back to language selection</button>
-                
-                <div class="info-section">
-                    <h2>📋 Nutritional Information Akvile Beauty Water</h2>
-                    <p><strong>Nutritional values per 100ml:</strong></p>
-                    <ul>
-                        <li>Energy: 8 kcal / 34 kJ</li>
-                        <li>Fat: 0g (of which saturates: 0g)</li>
-                        <li>Carbohydrates: 0.5g (of which sugars: 0g)</li>
-                        <li>Protein: 0.8g (marine collagen: 0.83g)</li>
-                        <li>Salt: 0.01g</li>
-                    </ul>
-                    <p><strong>Per bottle (600ml):</strong> 5g marine collagen + 60mg vitamin C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Ingredients</h2>
-                    <p>Natural mineral water, hydrolyzed marine collagen (collagen peptides from fish), vitamin C (L-ascorbic acid), natural flavours, preservatives: potassium sorbate, citric acid (acidity regulator).</p>
-                    <p><strong>Allergens:</strong> Contains <strong>fish</strong> (marine collagen)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Product Information</h2>
-                    <p><strong>Origin:</strong> Produced in Lithuania according to EU standards</p>
-                    <p><strong>Storage:</strong> Store in a cool, dry place away from direct sunlight. After opening, keep refrigerated and consume within 24 hours.</p>
-                    <p><strong>Best before:</strong> See date on bottle</p>
-                    <p><strong>Net content:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Warnings</h2>
-                    <ul>
-                        <li>Food supplements should not replace a varied and balanced diet</li>
-                        <li>Do not exceed the recommended daily dose</li>
-                        <li>Keep out of reach of children</li>
-                        <li>Consult a doctor if pregnant or breastfeeding</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Company Information</h2>
-                    <p><strong>Distributed by:</strong> [Your Company Name]</p>
-                    <p><strong>Address:</strong> [Your EU Address]</p>
-                    <p><strong>Contact:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Website:</strong> www.nbddrinks.eu</p>
-                </div>
-            </div>
-            
-            <!-- German Content -->
-            <div id="info-de" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Zurück zur Sprachauswahl</button>
-                
-                <div class="info-section">
-                    <h2>📋 Nährwertangaben Akvile Beauty Water</h2>
-                    <p><strong>Nährwerte pro 100ml:</strong></p>
-                    <ul>
-                        <li>Energie: 8 kcal / 34 kJ</li>
-                        <li>Fett: 0g (davon gesättigte Fettsäuren: 0g)</li>
-                        <li>Kohlenhydrate: 0,5g (davon Zucker: 0g)</li>
-                        <li>Eiweiß: 0,8g (marines Kollagen: 0,83g)</li>
-                        <li>Salz: 0,01g</li>
-                    </ul>
-                    <p><strong>Pro Flasche (600ml):</strong> 5g marines Kollagen + 60mg Vitamin C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Zutaten</h2>
-                    <p>Natürliches Mineralwasser, hydrolysiertes marines Kollagen (Kollagenpeptide aus Fisch), Vitamin C (L-Ascorbinsäure), natürliche Aromen, Konservierungsstoffe: Kaliumsorbat, Zitronensäure (Säureregulator).</p>
-                    <p><strong>Allergene:</strong> Enthält <strong>Fisch</strong> (marines Kollagen)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Produktinformationen</h2>
-                    <p><strong>Herkunft:</strong> Hergestellt in Litauen nach EU-Standards</p>
-                    <p><strong>Lagerung:</strong> An einem kühlen, trockenen Ort und vor direkter Sonneneinstrahlung geschützt aufbewahren. Nach dem Öffnen kühl lagern und innerhalb von 24 Stunden verbrauchen.</p>
-                    <p><strong>Mindesthaltbarkeitsdatum:</strong> Siehe Datum auf der Flasche</p>
-                    <p><strong>Nettofüllmenge:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Warnhinweise</h2>
-                    <ul>
-                        <li>Nahrungsergänzungsmittel sollten nicht als Ersatz für eine ausgewogene und abwechslungsreiche Ernährung dienen</li>
-                        <li>Die empfohlene Tagesdosis nicht überschreiten</li>
-                        <li>Außerhalb der Reichweite von Kindern aufbewahren</li>
-                        <li>Bei Schwangerschaft oder Stillzeit einen Arzt konsultieren</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Unternehmensinformationen</h2>
-                    <p><strong>Vertrieben durch:</strong> [Your Company Name]</p>
-                    <p><strong>Adresse:</strong> [Your EU Address]</p>
-                    <p><strong>Kontakt:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Webseite:</strong> www.nbddrinks.eu</p>
-                </div>
-            </div>
-            
-            <!-- Portuguese Content -->
-            <div id="info-pt" class="info-content">
-                <button class="back-btn" onclick="showLanguageSelector()">← Voltar à seleção de idioma</button>
-                
-                <div class="info-section">
-                    <h2>📋 Informação Nutricional Akvile Beauty Water</h2>
-                    <p><strong>Valores nutricionais por 100ml:</strong></p>
-                    <ul>
-                        <li>Energia: 8 kcal / 34 kJ</li>
-                        <li>Gorduras: 0g (das quais saturadas: 0g)</li>
-                        <li>Hidratos de carbono: 0,5g (dos quais açúcares: 0g)</li>
-                        <li>Proteínas: 0,8g (colagénio marinho: 0,83g)</li>
-                        <li>Sal: 0,01g</li>
-                    </ul>
-                    <p><strong>Por garrafa (600ml):</strong> 5g de colagénio marinho + 60mg vitamina C</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🔬 Ingredientes</h2>
-                    <p>Água mineral natural, colagénio marinho hidrolisado (péptidos de colagénio de peixe), vitamina C (ácido L-ascórbico), aromas naturais, conservantes: sorbato de potássio, ácido cítrico (regulador de acidez).</p>
-                    <p><strong>Alergénios:</strong> Contém <strong>peixe</strong> (colagénio marinho)</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>✅ Informação do Produto</h2>
-                    <p><strong>Origem:</strong> Produzido na Lituânia segundo normas UE</p>
-                    <p><strong>Conservação:</strong> Conservar em local fresco e seco, ao abrigo da luz solar direta. Depois de aberto, conservar no frigorífico e consumir no prazo de 24 horas.</p>
-                    <p><strong>Consumir de preferência antes de:</strong> Ver data na garrafa</p>
-                    <p><strong>Conteúdo líquido:</strong> 600ml</p>
-                </div>
-                
-                <div class="info-section">
-                    <h2>⚠️ Avisos</h2>
-                    <ul>
-                        <li>Os suplementos alimentares não devem ser utilizados como substitutos de uma dieta variada e equilibrada</li>
-                        <li>Não exceder a dose diária recomendada</li>
-                        <li>Manter fora do alcance das crianças</li>
-                        <li>Consultar um médico em caso de gravidez ou amamentação</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h2>🏢 Informações da Empresa</h2>
-                    <p><strong>Distribuído por:</strong> [Your Company Name]</p>
-                    <p><strong>Morada:</strong> [Your EU Address]</p>
-                    <p><strong>Contacto:</strong> info@nbddrinks.eu</p>
-                    <p><strong>Website:</strong> www.nbddrinks.eu</p>
-                </div>
+            <div id="productContent" class="info-content">
+                <button class="back-btn" onclick="showProductSelector()">← Back</button>
+                <div id="productInfo"></div>
             </div>
         </div>
         
         <div class="footer">
-            <p>© 2025 NBD Drinks | Premium European Beverages</p>
-            <p style="margin-top: 10px;">🌱 Transparent. Honest. No BS.</p>
+            <p>© 2025 NoBullshitDrinks | Premium European Beverages</p>
         </div>
     </div>
     
     <script>
-        function showLanguageSelector() {
-            document.getElementById('languageSelector').classList.add('active');
-            const infoContents = document.querySelectorAll('.info-content');
-            infoContents.forEach(content => content.classList.remove('active'));
-        }
+let currentLanguage = 'en';
+
+const DATA = {
+    beauty: {
+        en: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 8 kcal / 34 kJ", fat: "Fat: 0g (saturates: 0g)", carbs: "Carbohydrates: 0.5g (sugars: 0g)", protein: "Protein: 0.8g (marine collagen: 0.83g)", salt: "Salt: 0.01g", perBottle: "Per bottle (600ml): 5g marine collagen + 60mg vitamin C" }, ingredients: { title: "🔬 Ingredients", list: "Natural mineral water, hydrolyzed marine collagen (fish), vitamin C (L-ascorbic acid), natural flavours, preservatives: potassium sorbate, citric acid.", allergens: "Allergens: Contains fish" }, info: { title: "✅ Product Information", origin: "Origin: Lithuania, EU standards", storage: "Storage: Cool, dry place. After opening: refrigerate, consume within 24h.", bestBefore: "Best before: See bottle", netContent: "Net: 600ml" }, warnings: { title: "⚠️ Warnings", items: ["Food supplements don't replace varied diet", "Don't exceed recommended dose", "Keep away from children", "Consult doctor if pregnant/breastfeeding"] } },
+        fr: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 8 kcal / 34 kJ", fat: "Matières grasses: 0g (saturés: 0g)", carbs: "Glucides: 0,5g (sucres: 0g)", protein: "Protéines: 0,8g (collagène marin: 0,83g)", salt: "Sel: 0,01g", perBottle: "Par bouteille (600ml): 5g collagène marin + 60mg vitamine C" }, ingredients: { title: "🔬 Ingrédients", list: "Eau minérale naturelle, collagène marin hydrolysé (poisson), vitamine C (acide L-ascorbique), arômes naturels, conservateurs: sorbate de potassium, acide citrique.", allergens: "Allergènes: Contient du poisson" }, info: { title: "✅ Informations Produit", origin: "Origine: Lituanie, normes UE", storage: "Conservation: Endroit frais et sec. Après ouverture: réfrigérer, consommer sous 24h.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 600ml" }, warnings: { title: "⚠️ Avertissements", items: ["Les compléments ne remplacent pas une alimentation variée", "Ne pas dépasser la dose recommandée", "Tenir hors de portée des enfants", "Consulter un médecin si enceinte/allaitante"] } },
+        es: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 8 kcal / 34 kJ", fat: "Grasas: 0g (saturadas: 0g)", carbs: "Carbohidratos: 0,5g (azúcares: 0g)", protein: "Proteínas: 0,8g (colágeno marino: 0,83g)", salt: "Sal: 0,01g", perBottle: "Por botella (600ml): 5g colágeno marino + 60mg vitamina C" }, ingredients: { title: "🔬 Ingredientes", list: "Agua mineral natural, colágeno marino hidrolizado (pescado), vitamina C (ácido L-ascórbico), aromas naturales, conservantes: sorbato de potasio, ácido cítrico.", allergens: "Alérgenos: Contiene pescado" }, info: { title: "✅ Información del Producto", origin: "Origen: Lituania, estándares UE", storage: "Conservación: Lugar fresco y seco. Después de abrir: refrigerar, consumir en 24h.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 600ml" }, warnings: { title: "⚠️ Advertencias", items: ["Los complementos no sustituyen dieta variada", "No superar la dosis recomendada", "Mantener fuera del alcance de niños", "Consultar médico si embarazada/lactante"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella PET: Contenedor amarillo", cap: "Tapón: Contenedor amarillo", label: "Etiqueta: Contenedor amarillo" } },
+        it: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 8 kcal / 34 kJ", fat: "Grassi: 0g (saturi: 0g)", carbs: "Carboidrati: 0,5g (zuccheri: 0g)", protein: "Proteine: 0,8g (collagene marino: 0,83g)", salt: "Sale: 0,01g", perBottle: "Per bottiglia (600ml): 5g collagene marino + 60mg vitamina C" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua minerale naturale, collagene marino idrolizzato (pesce), vitamina C (acido L-ascorbico), aromi naturali, conservanti: sorbato di potassio, acido citrico.", allergens: "Allergeni: Contiene pesce" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Lituania, standard UE", storage: "Conservazione: Luogo fresco e asciutto. Dopo apertura: refrigerare, consumare entro 24h.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 600ml" }, warnings: { title: "⚠️ Avvertenze", items: ["Gli integratori non sostituiscono dieta variata", "Non superare la dose consigliata", "Tenere lontano dai bambini", "Consultare medico se incinta/allattamento"] } },
+        de: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 8 kcal / 34 kJ", fat: "Fett: 0g (gesättigt: 0g)", carbs: "Kohlenhydrate: 0,5g (Zucker: 0g)", protein: "Eiweiß: 0,8g (marines Kollagen: 0,83g)", salt: "Salz: 0,01g", perBottle: "Pro Flasche (600ml): 5g marines Kollagen + 60mg Vitamin C" }, ingredients: { title: "🔬 Zutaten", list: "Natürliches Mineralwasser, hydrolysiertes marines Kollagen (Fisch), Vitamin C (L-Ascorbinsäure), natürliche Aromen, Konservierungsstoffe: Kaliumsorbat, Zitronensäure.", allergens: "Allergene: Enthält Fisch" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Litauen, EU-Standards", storage: "Lagerung: Kühl und trocken. Nach Öffnen: kühl lagern, binnen 24h verbrauchen.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 600ml" }, warnings: { title: "⚠️ Warnhinweise", items: ["Nahrungsergänzung ersetzt keine ausgewogene Ernährung", "Tagesdosis nicht überschreiten", "Außerhalb Reichweite von Kindern", "Bei Schwangerschaft/Stillzeit Arzt konsultieren"] } },
+        pt: { name: "Akvile Beauty Water 0.6L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 8 kcal / 34 kJ", fat: "Gorduras: 0g (saturadas: 0g)", carbs: "Hidratos de carbono: 0,5g (açúcares: 0g)", protein: "Proteínas: 0,8g (colagénio marinho: 0,83g)", salt: "Sal: 0,01g", perBottle: "Por garrafa (600ml): 5g colagénio marinho + 60mg vitamina C" }, ingredients: { title: "🔬 Ingredientes", list: "Água mineral natural, colagénio marinho hidrolisado (peixe), vitamina C (ácido L-ascórbico), aromas naturais, conservantes: sorbato de potássio, ácido cítrico.", allergens: "Alergénios: Contém peixe" }, info: { title: "✅ Informação do Produto", origin: "Origem: Lituânia, normas UE", storage: "Conservação: Local fresco e seco. Após abertura: refrigerar, consumir em 24h.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 600ml" }, warnings: { title: "⚠️ Avisos", items: ["Suplementos não substituem dieta variada", "Não exceder dose recomendada", "Manter fora do alcance de crianças", "Consultar médico se grávida/amamentação"] } }
+    },
+    digestive: {
+        en: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal / 0 kJ", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g", perBottle: "Per bottle (600ml): 0 calories, with apple cider vinegar & probiotics" }, ingredients: { title: "🔬 Ingredients", list: "Natural mineral water, apple cider vinegar, probiotics, ginger extract, natural flavours, CO2.", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: Lithuania, EU standards", storage: "Storage: Cool, dry place. After opening: refrigerate, consume within 24h.", bestBefore: "Best before: See bottle", netContent: "Net: 600ml" }, warnings: { title: "⚠️ Warnings", items: ["Food supplements don't replace varied diet", "Don't exceed recommended dose", "Keep away from children"] } },
+        fr: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal / 0 kJ", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g", perBottle: "Par bouteille (600ml): 0 calories, avec vinaigre de cidre & probiotiques" }, ingredients: { title: "🔬 Ingrédients", list: "Eau minérale naturelle, vinaigre de cidre, probiotiques, extrait de gingembre, arômes naturels, CO2.", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: Lituanie, normes UE", storage: "Conservation: Endroit frais et sec. Après ouverture: réfrigérer, consommer sous 24h.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 600ml" }, warnings: { title: "⚠️ Avertissements", items: ["Les compléments ne remplacent pas une alimentation variée", "Ne pas dépasser la dose recommandée", "Tenir hors de portée des enfants"] } },
+        es: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal / 0 kJ", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por botella (600ml): 0 calorías, con vinagre de manzana & probióticos" }, ingredients: { title: "🔬 Ingredientes", list: "Agua mineral natural, vinagre de sidra de manzana, probióticos, extracto de jengibre, aromas naturales, CO2.", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Lituania, estándares UE", storage: "Conservación: Lugar fresco y seco. Después de abrir: refrigerar, consumir en 24h.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 600ml" }, warnings: { title: "⚠️ Advertencias", items: ["Los complementos no sustituyen dieta variada", "No superar la dosis recomendada", "Mantener fuera del alcance de niños"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella PET: Contenedor amarillo", cap: "Tapón: Contenedor amarillo", label: "Etiqueta: Contenedor amarillo" } },
+        it: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g", perBottle: "Per bottiglia (600ml): 0 calorie, con aceto di mele & probiotici" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua minerale naturale, aceto di mele, probiotici, estratto di zenzero, aromi naturali, CO2.", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Lituania, standard UE", storage: "Conservazione: Luogo fresco e asciutto. Dopo apertura: refrigerare, consumare entro 24h.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 600ml" }, warnings: { title: "⚠️ Avvertenze", items: ["Gli integratori non sostituiscono dieta variata", "Non superare la dose consigliata", "Tenere lontano dai bambini"] } },
+        de: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal / 0 kJ", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g", perBottle: "Pro Flasche (600ml): 0 Kalorien, mit Apfelessig & Probiotika" }, ingredients: { title: "🔬 Zutaten", list: "Natürliches Mineralwasser, Apfelessig, Probiotika, Ingwerextrakt, natürliche Aromen, CO2.", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Litauen, EU-Standards", storage: "Lagerung: Kühl und trocken. Nach Öffnen: kühl lagern, binnen 24h verbrauchen.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 600ml" }, warnings: { title: "⚠️ Warnhinweise", items: ["Nahrungsergänzung ersetzt keine ausgewogene Ernährung", "Tagesdosis nicht überschreiten", "Außerhalb Reichweite von Kindern"] } },
+        pt: { name: "Akvile Digestive Water 0.6L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por garrafa (600ml): 0 calorias, com vinagre de maçã & probióticos" }, ingredients: { title: "🔬 Ingredientes", list: "Água mineral natural, vinagre de maçã, probióticos, extrato de gengibre, aromas naturais, CO2.", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: Lituânia, normas UE", storage: "Conservação: Local fresco e seco. Após abertura: refrigerar, consumir em 24h.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 600ml" }, warnings: { title: "⚠️ Avisos", items: ["Suplementos não substituem dieta variada", "Não exceder dose recomendada", "Manter fora do alcance de crianças"] } }
+    },
+    greentea: {
+        en: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal / 0 kJ", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g", perBottle: "Per bottle (600ml): 0 calories, with fermented green tea, prebiotics & postbiotics" }, ingredients: { title: "🔬 Ingredients", list: "Natural mineral water, fermented green tea, CO2, apple cider vinegar, postbiotics (Lacticaseibacillus family), green tea flavouring.", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: Lithuania, EU standards", storage: "Storage: Cool, dry place. After opening: refrigerate, consume within 24h.", bestBefore: "Best before: See bottle", netContent: "Net: 600ml" }, warnings: { title: "⚠️ Warnings", items: ["Food supplements don't replace varied diet", "Don't exceed recommended dose", "Keep away from children", "Contains caffeine (not recommended for children/pregnant women)"] } },
+        fr: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal / 0 kJ", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g", perBottle: "Par bouteille (600ml): 0 calories, avec thé vert fermenté, prébiotiques & postbiotiques" }, ingredients: { title: "🔬 Ingrédients", list: "Eau minérale naturelle, thé vert fermenté, CO2, vinaigre de cidre, postbiotiques (famille Lacticaseibacillus), arôme de thé vert.", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: Lituanie, normes UE", storage: "Conservation: Endroit frais et sec. Après ouverture: réfrigérer, consommer sous 24h.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 600ml" }, warnings: { title: "⚠️ Avertissements", items: ["Les compléments ne remplacent pas une alimentation variée", "Ne pas dépasser la dose recommandée", "Tenir hors de portée des enfants", "Contient de la caféine (déconseillé enfants/femmes enceintes)"] } },
+        es: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal / 0 kJ", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por botella (600ml): 0 calorías, con té verde fermentado, prebióticos & postbióticos" }, ingredients: { title: "🔬 Ingredientes", list: "Agua mineral natural, té verde fermentado, CO2, vinagre de sidra de manzana, postbióticos (familia Lacticaseibacillus), aroma de té verde.", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Lituania, estándares UE", storage: "Conservación: Lugar fresco y seco. Después de abrir: refrigerar, consumir en 24h.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 600ml" }, warnings: { title: "⚠️ Advertencias", items: ["Los complementos no sustituyen dieta variada", "No superar la dosis recomendada", "Mantener fuera del alcance de niños", "Contiene cafeína (no recomendado niños/embarazadas)"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella PET: Contenedor amarillo", cap: "Tapón: Contenedor amarillo", label: "Etiqueta: Contenedor amarillo" } },
+        it: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g", perBottle: "Per bottiglia (600ml): 0 calorie, con tè verde fermentato, prebiotici & postbiotici" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua minerale naturale, tè verde fermentato, CO2, aceto di mele, postbiotici (famiglia Lacticaseibacillus), aroma di tè verde.", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Lituania, standard UE", storage: "Conservazione: Luogo fresco e asciutto. Dopo apertura: refrigerare, consumare entro 24h.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 600ml" }, warnings: { title: "⚠️ Avvertenze", items: ["Gli integratori non sostituiscono dieta variata", "Non superare la dose consigliata", "Tenere lontano dai bambini", "Contiene caffeina (sconsigliato bambini/donne incinte)"] } },
+        de: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal / 0 kJ", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g", perBottle: "Pro Flasche (600ml): 0 Kalorien, mit fermentiertem grünem Tee, Präbiotika & Postbiotika" }, ingredients: { title: "🔬 Zutaten", list: "Natürliches Mineralwasser, fermentierter grüner Tee, CO2, Apfelessig, Postbiotika (Lacticaseibacillus Familie), Grüntee-Aroma.", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Litauen, EU-Standards", storage: "Lagerung: Kühl und trocken. Nach Öffnen: kühl lagern, binnen 24h verbrauchen.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 600ml" }, warnings: { title: "⚠️ Warnhinweise", items: ["Nahrungsergänzung ersetzt keine ausgewogene Ernährung", "Tagesdosis nicht überschreiten", "Außerhalb Reichweite von Kindern", "Enthält Koffein (nicht für Kinder/Schwangere)"] } },
+        pt: { name: "Akvile Pre+Post Green Tea 0.6L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por garrafa (600ml): 0 calorias, com chá verde fermentado, prebióticos & postbióticos" }, ingredients: { title: "🔬 Ingredientes", list: "Água mineral natural, chá verde fermentado, CO2, vinagre de maçã, postbióticos (família Lacticaseibacillus), aroma de chá verde.", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: Lituânia, normas UE", storage: "Conservação: Local fresco e seco. Após abertura: refrigerar, consumir em 24h.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 600ml" }, warnings: { title: "⚠️ Avisos", items: ["Suplementos não substituem dieta variada", "Não exceder dose recomendada", "Manter fora do alcance de crianças", "Contém cafeína (não recomendado crianças/grávidas)"] } }
+    },
+    vossplus: {
+        en: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal / 0 kJ", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g", perBottle: "Per bottle (500ml): 0 calories, electrolytes" }, ingredients: { title: "🔬 Ingredients", list: "Purified water, potassium bicarbonate, calcium chloride, sodium bicarbonate, calcium citrate malate, magnesium citrate malate.", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: Norway, EU standards", storage: "Storage: Cool, dry place. Best at refrigerated temperature.", bestBefore: "Best before: See bottle", netContent: "Net: 500ml" }, warnings: { title: "⚠️ Information", items: ["Electrolyte-enhanced water", "Not a substitute for varied diet", "Keep away from direct sunlight"] } },
+        fr: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal / 0 kJ", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g", perBottle: "Par bouteille (500ml): 0 calories, électrolytes" }, ingredients: { title: "🔬 Ingrédients", list: "Eau purifiée, bicarbonate de potassium, chlorure de calcium, bicarbonate de sodium, malate de citrate de calcium, malate de citrate de magnésium.", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: Norvège, normes UE", storage: "Conservation: Endroit frais et sec. Meilleur frais.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 500ml" }, warnings: { title: "⚠️ Information", items: ["Eau enrichie en électrolytes", "Ne remplace pas une alimentation variée", "Tenir à l'abri de la lumière directe"] } },
+        es: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal / 0 kJ", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por botella (500ml): 0 calorías, electrolitos" }, ingredients: { title: "🔬 Ingredientes", list: "Agua purificada, bicarbonato de potasio, cloruro de calcio, bicarbonato de sodio, malato de citrato de calcio, malato de citrato de magnesio.", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Noruega, estándares UE", storage: "Conservación: Lugar fresco y seco. Mejor refrigerado.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 500ml" }, warnings: { title: "⚠️ Información", items: ["Agua enriquecida con electrolitos", "No sustituye dieta variada", "Mantener alejado de luz directa"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella PET: Contenedor amarillo", cap: "Tapón: Contenedor amarillo", label: "Etiqueta: Contenedor amarillo" } },
+        it: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g", perBottle: "Per bottiglia (500ml): 0 calorie, elettroliti" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua purificata, bicarbonato di potassio, cloruro di calcio, bicarbonato di sodio, malato di citrato di calcio, malato di citrato di magnesio.", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Norvegia, standard UE", storage: "Conservazione: Luogo fresco e asciutto. Meglio refrigerato.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 500ml" }, warnings: { title: "⚠️ Informazioni", items: ["Acqua arricchita con elettroliti", "Non sostituisce dieta variata", "Tenere lontano dalla luce diretta"] } },
+        de: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal / 0 kJ", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g", perBottle: "Pro Flasche (500ml): 0 Kalorien, Elektrolyte" }, ingredients: { title: "🔬 Zutaten", list: "Gereinigtes Wasser, Kaliumbicarbonat, Calciumchlorid, Natriumbicarbonat, Calciumcitratmalat, Magnesiumcitratmalat.", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Norwegen, EU-Standards", storage: "Lagerung: Kühl und trocken. Am besten gekühlt.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 500ml" }, warnings: { title: "⚠️ Information", items: ["Mit Elektrolyten angereichertes Wasser", "Ersetzt keine ausgewogene Ernährung", "Von direktem Sonnenlicht fernhalten"] } },
+        pt: { name: "Voss Plus 0.5L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por garrafa (500ml): 0 calorias, eletrólitos" }, ingredients: { title: "🔬 Ingredientes", list: "Água purificada, bicarbonato de potássio, cloreto de cálcio, bicarbonato de sódio, malato de citrato de cálcio, malato de citrato de magnésio.", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: Noruega, normas UE", storage: "Conservação: Local fresco e seco. Melhor refrigerado.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 500ml" }, warnings: { title: "⚠️ Informação", items: ["Água enriquecida com eletrólitos", "Não substitui dieta variada", "Manter afastado de luz direta"] } }
+    },
+    lemon: {
+        en: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal / 0 kJ", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g", perBottle: "Per bottle: 0 calories, 0 sugar, made with real fruits" }, ingredients: { title: "🔬 Ingredients", list: "Natural mineral water, natural citrus flavouring.", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: Lithuania, EU standards", storage: "Storage: +5°C to +25°C. Cool, dry place.", bestBefore: "Best before: See bottle", netContent: "Net: 600ml / 1.5L" }, warnings: { title: "✨ Highlights", items: ["NO sweeteners", "NO sugar", "0 calories", "Made with real fruits"] } },
+        fr: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal / 0 kJ", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g", perBottle: "Par bouteille: 0 calories, 0 sucre, avec vrais fruits" }, ingredients: { title: "🔬 Ingrédients", list: "Eau minérale naturelle, arôme naturel d'agrumes.", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: Lituanie, normes UE", storage: "Conservation: +5°C à +25°C. Endroit frais et sec.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 600ml / 1.5L" }, warnings: { title: "✨ Points forts", items: ["SANS édulcorants", "SANS sucre", "0 calories", "Fait avec de vrais fruits"] } },
+        es: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal / 0 kJ", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por botella: 0 calorías, 0 azúcar, con frutas reales" }, ingredients: { title: "🔬 Ingredientes", list: "Agua mineral natural, aroma natural de cítricos.", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Lituania, estándares UE", storage: "Conservación: +5°C a +25°C. Lugar fresco y seco.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 600ml / 1.5L" }, warnings: { title: "✨ Destacados", items: ["SIN edulcorantes", "SIN azúcar", "0 calorías", "Hecho con frutas reales"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella PET: Contenedor amarillo", cap: "Tapón: Contenedor amarillo", label: "Etiqueta: Contenedor amarillo" } },
+        it: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g", perBottle: "Per bottiglia: 0 calorie, 0 zucchero, con vera frutta" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua minerale naturale, aroma naturale di agrumi.", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Lituania, standard UE", storage: "Conservazione: +5°C a +25°C. Luogo fresco e asciutto.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 600ml / 1.5L" }, warnings: { title: "✨ Caratteristiche", items: ["SENZA dolcificanti", "SENZA zucchero", "0 calorie", "Fatto con vera frutta"] } },
+        de: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal / 0 kJ", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g", perBottle: "Pro Flasche: 0 Kalorien, 0 Zucker, mit echten Früchten" }, ingredients: { title: "🔬 Zutaten", list: "Natürliches Mineralwasser, natürliches Zitrusaroma.", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Litauen, EU-Standards", storage: "Lagerung: +5°C bis +25°C. Kühl und trocken.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 600ml / 1.5L" }, warnings: { title: "✨ Highlights", items: ["OHNE Süßstoffe", "OHNE Zucker", "0 Kalorien", "Mit echten Früchten"] } },
+        pt: { name: "Akvile Lemon Sparkling", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por garrafa: 0 calorias, 0 açúcar, com frutas reais" }, ingredients: { title: "🔬 Ingredientes", list: "Água mineral natural, aroma natural de citrinos.", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: Lituânia, normas UE", storage: "Conservação: +5°C a +25°C. Local fresco e seco.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 600ml / 1.5L" }, warnings: { title: "✨ Destaques", items: ["SEM adoçantes", "SEM açúcar", "0 calorias", "Feito com frutas reais"] } }
+    },
+    'voss-strawberry': {
+        en: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal / 0 kJ", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g", perBottle: "Per can (330ml): 0 calories" }, ingredients: { title: "🔬 Ingredients", list: "Water, Carbon Dioxide, Natural Flavouring, Acidity Regulator (E500, Sodium Bicarbonate).", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: Norway, EU standards", storage: "Storage: Cool, dry place. Best refrigerated.", bestBefore: "Best before: See can", netContent: "Net: 330ml" }, warnings: { title: "✨ Highlights", items: ["0 sugar", "0 calories", "Natural flavours"] } },
+        fr: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal / 0 kJ", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g", perBottle: "Par canette (330ml): 0 calories" }, ingredients: { title: "🔬 Ingrédients", list: "Eau, dioxyde de carbone, arôme naturel, régulateur d'acidité (E500, bicarbonate de sodium).", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: Norvège, normes UE", storage: "Conservation: Endroit frais et sec. Meilleur frais.", bestBefore: "À consommer avant: Voir canette", netContent: "Contenu: 330ml" }, warnings: { title: "✨ Points forts", items: ["0 sucre", "0 calories", "Arômes naturels"] } },
+        es: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal / 0 kJ", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por lata (330ml): 0 calorías" }, ingredients: { title: "🔬 Ingredientes", list: "Agua, dióxido de carbono, aromatizante natural, regulador de acidez (E500, bicarbonato de sodio).", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Noruega, estándares UE", storage: "Conservación: Lugar fresco y seco. Mejor refrigerado.", bestBefore: "Consumir antes de: Ver lata", netContent: "Contenido: 330ml" }, warnings: { title: "✨ Destacados", items: ["0 azúcar", "0 calorías", "Aromas naturales"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Lata aluminio: Contenedor amarillo", cap: "N/A", label: "N/A" } },
+        it: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g", perBottle: "Per lattina (330ml): 0 calorie" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua, anidride carbonica, aroma naturale, regolatore di acidità (E500, bicarbonato di sodio).", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Norvegia, standard UE", storage: "Conservazione: Luogo fresco e asciutto. Meglio refrigerato.", bestBefore: "Da consumarsi entro: Vedere lattina", netContent: "Contenuto: 330ml" }, warnings: { title: "✨ Caratteristiche", items: ["0 zucchero", "0 calorie", "Aromi naturali"] } },
+        de: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal / 0 kJ", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g", perBottle: "Pro Dose (330ml): 0 Kalorien" }, ingredients: { title: "🔬 Zutaten", list: "Wasser, Kohlendioxid, natürliches Aroma, Säureregulator (E500, Natriumbicarbonat).", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Norwegen, EU-Standards", storage: "Lagerung: Kühl und trocken. Am besten gekühlt.", bestBefore: "MHD: Siehe Dose", netContent: "Inhalt: 330ml" }, warnings: { title: "✨ Highlights", items: ["0 Zucker", "0 Kalorien", "Natürliche Aromen"] } },
+        pt: { name: "Voss Strawberry Ginger 0.33L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal / 0 kJ", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g", perBottle: "Por lata (330ml): 0 calorias" }, ingredients: { title: "🔬 Ingredientes", list: "Água, dióxido de carbono, aromatizante natural, regulador de acidez (E500, bicarbonato de sódio).", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: Noruega, normas UE", storage: "Conservação: Local fresco e seco. Melhor refrigerado.", bestBefore: "Consumir antes de: Ver lata", netContent: "Conteúdo: 330ml" }, warnings: { title: "✨ Destaques", items: ["0 açúcar", "0 calorias", "Aromas naturais"] } }
+    },
+    'josephine-lemon': {
+        en: { name: "Josephine Lemon & Rose 0.33L", nutrition: { title: "📋 Nutritional Information", per100: "Per 100ml:", energy: "Energy: 0 kcal", fat: "Fat: 0g", carbs: "Carbohydrates: 0g", protein: "Protein: 0g", salt: "Salt: 0g" }, ingredients: { title: "🔬 Ingredients", list: "Mountain spring water, organic linden extract, natural blueberry extract, CO2.", allergens: "Allergens: None" }, info: { title: "✅ Product Information", origin: "Origin: France, premium botanicals", storage: "Storage: Cool, dry place. Aluminum bottle recyclable.", bestBefore: "Best before: See bottle", netContent: "Net: 330ml" }, warnings: { title: "✨ Highlights", items: ["0 sugar", "0 calories", "Premium botanicals", "Recyclable aluminum"] } },
+        fr: { name: "Josephine Citron & Rose 0.33L", nutrition: { title: "📋 Informations Nutritionnelles", per100: "Pour 100ml:", energy: "Énergie: 0 kcal", fat: "Matières grasses: 0g", carbs: "Glucides: 0g", protein: "Protéines: 0g", salt: "Sel: 0g" }, ingredients: { title: "🔬 Ingrédients", list: "Eau de source de montagne, extrait de tilleul bio, extrait naturel de myrtille, CO2.", allergens: "Allergènes: Aucun" }, info: { title: "✅ Informations Produit", origin: "Origine: France, botaniques premium", storage: "Conservation: Endroit frais et sec. Bouteille aluminium recyclable.", bestBefore: "À consommer avant: Voir bouteille", netContent: "Contenu: 330ml" }, warnings: { title: "✨ Points forts", items: ["0 sucre", "0 calories", "Botaniques premium", "Aluminium recyclable"] } },
+        es: { name: "Josephine Limón & Rosa 0.33L", nutrition: { title: "📋 Información Nutricional", per100: "Por 100ml:", energy: "Energía: 0 kcal", fat: "Grasas: 0g", carbs: "Carbohidratos: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g" }, ingredients: { title: "🔬 Ingredientes", list: "Agua de manantial de montaña, extracto de tilo orgánico, extracto natural de arándano, CO2.", allergens: "Alérgenos: Ninguno" }, info: { title: "✅ Información del Producto", origin: "Origen: Francia, botánicos premium", storage: "Conservación: Lugar fresco y seco. Botella aluminio reciclable.", bestBefore: "Consumir antes de: Ver botella", netContent: "Contenido: 330ml" }, warnings: { title: "✨ Destacados", items: ["0 azúcar", "0 calorías", "Botánicos premium", "Aluminio reciclable"] }, recycling: { title: "♻️ Reciclaje (RD 1055/2022)", bottle: "Botella aluminio: Contenedor amarillo", cap: "N/A", label: "N/A" } },
+        it: { name: "Josephine Limone & Rosa 0.33L", nutrition: { title: "📋 Informazioni Nutrizionali", per100: "Per 100ml:", energy: "Energia: 0 kcal", fat: "Grassi: 0g", carbs: "Carboidrati: 0g", protein: "Proteine: 0g", salt: "Sale: 0g" }, ingredients: { title: "🔬 Ingredienti", list: "Acqua di sorgente di montagna, estratto di tiglio biologico, estratto naturale di mirtillo, CO2.", allergens: "Allergeni: Nessuno" }, info: { title: "✅ Informazioni Prodotto", origin: "Origine: Francia, botanici premium", storage: "Conservazione: Luogo fresco e asciutto. Bottiglia alluminio riciclabile.", bestBefore: "Da consumarsi entro: Vedere bottiglia", netContent: "Contenuto: 330ml" }, warnings: { title: "✨ Caratteristiche", items: ["0 zucchero", "0 calorie", "Botanici premium", "Alluminio riciclabile"] } },
+        de: { name: "Josephine Zitrone & Rose 0.33L", nutrition: { title: "📋 Nährwertangaben", per100: "Pro 100ml:", energy: "Energie: 0 kcal", fat: "Fett: 0g", carbs: "Kohlenhydrate: 0g", protein: "Eiweiß: 0g", salt: "Salz: 0g" }, ingredients: { title: "🔬 Zutaten", list: "Bergquellwasser, Bio-Lindenextrakt, natürlicher Heidelbeerextrakt, CO2.", allergens: "Allergene: Keine" }, info: { title: "✅ Produktinformationen", origin: "Herkunft: Frankreich, Premium-Botanicals", storage: "Lagerung: Kühl und trocken. Aluminiumflasche recyclebar.", bestBefore: "MHD: Siehe Flasche", netContent: "Inhalt: 330ml" }, warnings: { title: "✨ Highlights", items: ["0 Zucker", "0 Kalorien", "Premium Botanicals", "Recyclebares Aluminium"] } },
+        pt: { name: "Josephine Limão & Rosa 0.33L", nutrition: { title: "📋 Informação Nutricional", per100: "Por 100ml:", energy: "Energia: 0 kcal", fat: "Gorduras: 0g", carbs: "Hidratos de carbono: 0g", protein: "Proteínas: 0g", salt: "Sal: 0g" }, ingredients: { title: "🔬 Ingredientes", list: "Água de nascente de montanha, extrato de tília biológico, extrato natural de mirtilo, CO2.", allergens: "Alergénios: Nenhum" }, info: { title: "✅ Informação do Produto", origin: "Origem: França, botânicos premium", storage: "Conservação: Local fresco e seco. Garrafa alumínio reciclável.", bestBefore: "Consumir antes de: Ver garrafa", netContent: "Conteúdo: 330ml" }, warnings: { title: "✨ Destaques", items: ["0 açúcar", "0 calorias", "Botânicos premium", "Alumínio reciclável"] } }
+    }
+};
+
+// Copy data structure for other similar products
+DATA.lime = JSON.parse(JSON.stringify(DATA.lemon));
+DATA.lime.en.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.fr.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.es.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.it.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.de.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.pt.name = "Akvile Tahiti Lime Sparkling";
+DATA.lime.en.ingredients.list = "Natural mineral water, natural Tahiti lime flavouring.";
+DATA.lime.fr.ingredients.list = "Eau minérale naturelle, arôme naturel de citron vert Tahiti.";
+DATA.lime.es.ingredients.list = "Agua mineral natural, aroma natural de lima Tahiti.";
+DATA.lime.it.ingredients.list = "Acqua minerale naturale, aroma naturale di lime Tahiti.";
+DATA.lime.de.ingredients.list = "Natürliches Mineralwasser, natürliches Tahiti-Limetten-Aroma.";
+DATA.lime.pt.ingredients.list = "Água mineral natural, aroma natural de lima Tahiti.";
+
+DATA.peach = JSON.parse(JSON.stringify(DATA.lemon));
+DATA.peach.en.name = "Akvile Peach Sparkling";
+DATA.peach.fr.name = "Akvile Pêche Sparkling";
+DATA.peach.es.name = "Akvile Melocotón Sparkling";
+DATA.peach.it.name = "Akvile Pesca Sparkling";
+DATA.peach.de.name = "Akvile Pfirsich Sparkling";
+DATA.peach.pt.name = "Akvile Pêssego Sparkling";
+DATA.peach.en.ingredients.list = "Natural mineral water, natural peach flavouring.";
+DATA.peach.fr.ingredients.list = "Eau minérale naturelle, arôme naturel de pêche.";
+DATA.peach.es.ingredients.list = "Agua mineral natural, aroma natural de melocotón.";
+DATA.peach.it.ingredients.list = "Acqua minerale naturale, aroma naturale di pesca.";
+DATA.peach.de.ingredients.list = "Natürliches Mineralwasser, natürliches Pfirsich-Aroma.";
+DATA.peach.pt.ingredients.list = "Água mineral natural, aroma natural de pêssego.";
+
+DATA.orange = JSON.parse(JSON.stringify(DATA.lemon));
+DATA.orange.en.name = "Akvile Orange Sparkling";
+DATA.orange.fr.name = "Akvile Orange Sparkling";
+DATA.orange.es.name = "Akvile Naranja Sparkling";
+DATA.orange.it.name = "Akvile Arancia Sparkling";
+DATA.orange.de.name = "Akvile Orange Sparkling";
+DATA.orange.pt.name = "Akvile Laranja Sparkling";
+DATA.orange.en.ingredients.list = "Natural mineral water, natural orange flavouring with other natural flavourings.";
+DATA.orange.fr.ingredients.list = "Eau minérale naturelle, arôme naturel d'orange avec autres arômes naturels.";
+DATA.orange.es.ingredients.list = "Agua mineral natural, aroma natural de naranja con otros aromas naturales.";
+DATA.orange.it.ingredients.list = "Acqua minerale naturale, aroma naturale di arancia con altri aromi naturali.";
+DATA.orange.de.ingredients.list = "Natürliches Mineralwasser, natürliches Orangen-Aroma mit anderen natürlichen Aromen.";
+DATA.orange.pt.ingredients.list = "Água mineral natural, aroma natural de laranja com outros aromas naturais.";
+
+DATA.berry = JSON.parse(JSON.stringify(DATA.lemon));
+DATA.berry.en.name = "Akvile Red Berry Sparkling";
+DATA.berry.fr.name = "Akvile Baies Rouges Sparkling";
+DATA.berry.es.name = "Akvile Frutos Rojos Sparkling";
+DATA.berry.it.name = "Akvile Frutti Rossi Sparkling";
+DATA.berry.de.name = "Akvile Rote Beeren Sparkling";
+DATA.berry.pt.name = "Akvile Frutos Vermelhos Sparkling";
+DATA.berry.en.ingredients.list = "Natural mineral water, natural red berry flavouring with other natural flavourings.";
+DATA.berry.fr.ingredients.list = "Eau minérale naturelle, arôme naturel de baies rouges avec autres arômes naturels.";
+DATA.berry.es.ingredients.list = "Agua mineral natural, aroma natural de frutos rojos con otros aromas naturales.";
+DATA.berry.it.ingredients.list = "Acqua minerale naturale, aroma naturale di frutti rossi con altri aromi naturali.";
+DATA.berry.de.ingredients.list = "Natürliches Mineralwasser, natürliches rote-Beeren-Aroma mit anderen natürlichen Aromen.";
+DATA.berry.pt.ingredients.list = "Água mineral natural, aroma natural de frutos vermelhos com outros aromas naturais.";
+
+DATA['voss-lime'] = JSON.parse(JSON.stringify(DATA['voss-strawberry']));
+DATA['voss-lime'].en.name = "Voss Lime Mint 0.33L";
+DATA['voss-lime'].fr.name = "Voss Lime Mint 0.33L";
+DATA['voss-lime'].es.name = "Voss Lima Menta 0.33L";
+DATA['voss-lime'].it.name = "Voss Lime Menta 0.33L";
+DATA['voss-lime'].de.name = "Voss Limette Minze 0.33L";
+DATA['voss-lime'].pt.name = "Voss Lima Hortelã 0.33L";
+
+DATA['voss-lemon'] = JSON.parse(JSON.stringify(DATA['voss-strawberry']));
+DATA['voss-lemon'].en.name = "Voss Lemon Cucumber 0.33L";
+DATA['voss-lemon'].fr.name = "Voss Citron Concombre 0.33L";
+DATA['voss-lemon'].es.name = "Voss Limón Pepino 0.33L";
+DATA['voss-lemon'].it.name = "Voss Limone Cetriolo 0.33L";
+DATA['voss-lemon'].de.name = "Voss Zitrone Gurke 0.33L";
+DATA['voss-lemon'].pt.name = "Voss Limão Pepino 0.33L";
+
+DATA['josephine-plum'] = JSON.parse(JSON.stringify(DATA['josephine-lemon']));
+DATA['josephine-plum'].en.name = "Josephine Mirabelle Plum & Cinnamon 0.33L";
+DATA['josephine-plum'].fr.name = "Josephine Mirabelle & Cannelle 0.33L";
+DATA['josephine-plum'].es.name = "Josephine Ciruela Mirabelle & Canela 0.33L";
+DATA['josephine-plum'].it.name = "Josephine Mirrabella & Cannella 0.33L";
+DATA['josephine-plum'].de.name = "Josephine Mirabelle & Zimt 0.33L";
+DATA['josephine-plum'].pt.name = "Josephine Mirabelle & Canela 0.33L";
+
+DATA['josephine-blueberry'] = JSON.parse(JSON.stringify(DATA['josephine-lemon']));
+DATA['josephine-blueberry'].en.name = "Josephine Blueberry & Linden 0.33L";
+DATA['josephine-blueberry'].fr.name = "Josephine Myrtille & Tilleul 0.33L";
+DATA['josephine-blueberry'].es.name = "Josephine Arándano & Tilo 0.33L";
+DATA['josephine-blueberry'].it.name = "Josephine Mirtillo & Tiglio 0.33L";
+DATA['josephine-blueberry'].de.name = "Josephine Heidelbeere & Linde 0.33L";
+DATA['josephine-blueberry'].pt.name = "Josephine Mirtilo & Tília 0.33L";
+
+const LABELS = {
+    en: { selectProduct: "Select Your Product", distributed: "Distributed by", address: "Address", contact: "Contact", website: "Website" },
+    fr: { selectProduct: "Sélectionnez Votre Produit", distributed: "Distribué par", address: "Adresse", contact: "Contact", website: "Site web" },
+    es: { selectProduct: "Seleccione Su Producto", distributed: "Distribuido por", address: "Dirección", contact: "Contacto", website: "Sitio web" },
+    it: { selectProduct: "Seleziona il Tuo Prodotto", distributed: "Distribuito da", address: "Indirizzo", contact: "Contatto", website: "Sito web" },
+    de: { selectProduct: "Wählen Sie Ihr Produkt", distributed: "Vertrieben durch", address: "Adresse", contact: "Kontakt", website: "Webseite" },
+    pt: { selectProduct: "Selecione o Seu Produto", distributed: "Distribuído por", address: "Morada", contact: "Contacto", website: "Website" }
+};
+
+function showLanguageSelector() {
+    document.getElementById('languageSelector').classList.add('active');
+    document.getElementById('productSelector').classList.remove('active');
+    document.getElementById('productContent').classList.remove('active');
+}
+
+function selectLanguage(lang) {
+    currentLanguage = lang;
+    document.getElementById('languageSelector').classList.remove('active');
+    document.getElementById('productSelector').classList.add('active');
+    document.getElementById('productSelectorTitle').textContent = LABELS[lang].selectProduct;
+}
+
+function showProductSelector() {
+    document.getElementById('productSelector').classList.add('active');
+    document.getElementById('productContent').classList.remove('active');
+}
+
+function showProduct(productId) {
+    const product = DATA[productId];
+    if (!product || !product[currentLanguage]) {
+        alert('Product information not available');
+        return;
+    }
+    
+    const data = product[currentLanguage];
+    const labels = LABELS[currentLanguage];
+    
+    let html = `
+        <div class="info-section">
+            <h2>${data.nutrition.title}</h2>
+            <p><strong>${data.nutrition.per100}</strong></p>
+            <ul>
+                <li>${data.nutrition.energy}</li>
+                <li>${data.nutrition.fat}</li>
+                <li>${data.nutrition.carbs}</li>
+                <li>${data.nutrition.protein}</li>
+                <li>${data.nutrition.salt}</li>
+            </ul>
+            ${data.nutrition.perBottle ? `<p style="margin-top:10px"><strong>${data.nutrition.perBottle}</strong></p>` : ''}
+        </div>
         
-        function showInfo(lang) {
-            document.getElementById('languageSelector').classList.remove('active');
-            const infoContents = document.querySelectorAll('.info-content');
-            infoContents.forEach(content => content.classList.remove('active'));
-            document.getElementById('info-' + lang).classList.add('active');
-        }
+        <div class="info-section">
+            <h2>${data.ingredients.title}</h2>
+            <p>${data.ingredients.list}</p>
+            <p><strong>${data.ingredients.allergens}</strong></p>
+        </div>
+        
+        <div class="info-section">
+            <h2>${data.info.title}</h2>
+            <p><strong>${data.info.origin}</strong></p>
+            <p><strong>${data.info.storage}</strong></p>
+            <p><strong>${data.info.bestBefore}</strong></p>
+            <p><strong>${data.info.netContent}</strong></p>
+        </div>
+        
+        <div class="info-section">
+            <h2>${data.warnings.title}</h2>
+            <ul>
+                ${data.warnings.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+    
+    if (data.recycling && currentLanguage === 'es') {
+        html += `
+            <div class="info-section">
+                <h2>${data.recycling.title}</h2>
+                <p><strong>${data.recycling.bottle}</strong></p>
+                ${data.recycling.cap !== 'N/A' ? `<p><strong>${data.recycling.cap}</strong></p>` : ''}
+                ${data.recycling.label !== 'N/A' ? `<p><strong>${data.recycling.label}</strong></p>` : ''}
+            </div>
+        `;
+    }
+    
+    html += `
+        <div class="info-section">
+            <h2>🏢 ${labels.distributed}</h2>
+            <p><strong>${labels.distributed}:</strong> NoBullshitDrinks</p>
+            <p><strong>${labels.address}:</strong> Kesklinna linnaosa, Pärnu mnt 139e/2-8, Harju maakond, Tallinn, 11317</p>
+            <p><strong>${labels.contact}:</strong> info@nobullshitdrinks.com</p>
+            <p><strong>${labels.website}:</strong> www.nobullshitdrinks.com</p>
+        </div>
+    `;
+    
+    document.getElementById('productInfo').innerHTML = html;
+    document.getElementById('productSelector').classList.remove('active');
+    document.getElementById('productContent').classList.add('active');
+}
     </script>
 </body>
 </html>
