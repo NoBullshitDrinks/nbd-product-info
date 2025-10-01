@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information | NBD Drinks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2C5F7D 0%, #4A90B8 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .language-selector {
+            display: none;
+        }
+        
+        .language-selector.active {
+            display: block;
+        }
+        
+        .language-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 12px 0;
+            background: white;
+            border: 2px solid #2C5F7D;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C5F7D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        
+        .language-btn:hover {
+            background: #2C5F7D;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 125, 0.3);
+        }
+        
+        .language-btn::before {
+            content: "🌍 ";
+            margin-right: 10px;
+        }
+        
+        .info-content {
+            display: none;
+        }
+        
+        .info-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .info-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #2C5F7D;
+        }
+        
+        .info-section h2 {
+            color: #2C5F7D;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .info-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .info-section ul {
+            margin-left: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .info-section strong {
+            color: #2C5F7D;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background: #7FB069;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NBD Product Information</h1>
+            <p>Select your language | Seleziona la lingua | Seleccione el idioma</p>
+        </div>
+        
+        <div class="content">
+            <!-- Language Selection -->
+            <div id="languageSelector" class="language-selector active">
+                <button class="language-btn" onclick="showInfo('it')">Italiano (Italia)</button>
+                <button class="language-btn" onclick="showInfo('es')">Español (España)</button>
+                <button class="language-btn" onclick="showInfo('fr')">Français (France)</button>
+                <button class="language-btn" onclick="showInfo('en')">English (UK)</button>
+                <button class="language-btn" onclick="showInfo('de')">Deutsch (Deutschland)</button>
+                <button class="language-btn" onclick="showInfo('pt')">Português (Portugal)</button>
+            </div>
+            
+            <!-- Italian Content -->
+            <div id="info-it" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Torna alla selezione lingua</button>
+                
+                <div class="info-section">
+                    <h2>📋 Informazioni Nutrizionali Akvile Beauty Water</h2>
+                    <p><strong>Valori nutrizionali per 100ml:</strong></p>
+                    <ul>
+                        <li>Energia: 8 kcal / 34 kJ</li>
+                        <li>Grassi: 0g (di cui acidi grassi saturi: 0g)</li>
+                        <li>Carboidrati: 0,5g (di cui zuccheri: 0g)</li>
+                        <li>Proteine: 0,8g (collagene marino: 0,83g)</li>
+                        <li>Sale: 0,01g</li>
+                    </ul>
+                    <p><strong>Per bottiglia (600ml):</strong> 5g di collagene marino + 60mg vitamina C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Ingredienti</h2>
+                    <p>Acqua minerale naturale, collagene marino idrolizzato (peptidi di collagene da pesce), vitamina C (acido L-ascorbico), aromi naturali, conservanti: sorbato di potassio, acido citrico (regolatore di acidità).</p>
+                    <p><strong>Allergeni:</strong> Contiene <strong>pesce</strong> (collagene marino)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Informazioni sul Prodotto</h2>
+                    <p><strong>Origine:</strong> Prodotto in Lituania secondo standard UE</p>
+                    <p><strong>Conservazione:</strong> Conservare in luogo fresco e asciutto, lontano dalla luce diretta del sole. Dopo l'apertura, conservare in frigorifero e consumare entro 24 ore.</p>
+                    <p><strong>Da consumarsi preferibilmente entro:</strong> Vedere la data sulla bottiglia</p>
+                    <p><strong>Contenuto netto:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Avvertenze</h2>
+                    <ul>
+                        <li>Gli integratori non sostituiscono una dieta variata ed equilibrata</li>
+                        <li>Non superare la dose giornaliera consigliata</li>
+                        <li>Tenere fuori dalla portata dei bambini</li>
+                        <li>Consultare un medico in caso di gravidanza o allattamento</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Informazioni sull'Azienda</h2>
+                    <p><strong>Distribuito da:</strong> [Your Company Name]</p>
+                    <p><strong>Indirizzo:</strong> [Your EU Address]</p>
+                    <p><strong>Contatto:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Sito web:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+            
+            <!-- Spanish Content -->
+            <div id="info-es" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Volver a selección de idioma</button>
+                
+                <div class="info-section">
+                    <h2>📋 Información Nutricional Akvile Beauty Water</h2>
+                    <p><strong>Valores nutricionales por 100ml:</strong></p>
+                    <ul>
+                        <li>Energía: 8 kcal / 34 kJ</li>
+                        <li>Grasas: 0g (de las cuales saturadas: 0g)</li>
+                        <li>Hidratos de carbono: 0,5g (de los cuales azúcares: 0g)</li>
+                        <li>Proteínas: 0,8g (colágeno marino: 0,83g)</li>
+                        <li>Sal: 0,01g</li>
+                    </ul>
+                    <p><strong>Por botella (600ml):</strong> 5g de colágeno marino + 60mg vitamina C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Ingredientes</h2>
+                    <p>Agua mineral natural, colágeno marino hidrolizado (péptidos de colágeno de pescado), vitamina C (ácido L-ascórbico), aromas naturales, conservantes: sorbato de potasio, ácido cítrico (regulador de acidez).</p>
+                    <p><strong>Alérgenos:</strong> Contiene <strong>pescado</strong> (colágeno marino)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Información del Producto</h2>
+                    <p><strong>Origen:</strong> Elaborado en Lituania según estándares UE</p>
+                    <p><strong>Conservación:</strong> Conservar en lugar fresco y seco, alejado de la luz solar directa. Después de abrir, conservar en el frigorífico y consumir en 24 horas.</p>
+                    <p><strong>Consumir preferentemente antes de:</strong> Ver fecha en la botella</p>
+                    <p><strong>Contenido neto:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Advertencias</h2>
+                    <ul>
+                        <li>Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada</li>
+                        <li>No superar la dosis diaria recomendada</li>
+                        <li>Mantener fuera del alcance de los niños</li>
+                        <li>Consultar con un médico en caso de embarazo o lactancia</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>♻️ Información de Reciclaje (Real Decreto 1055/2022)</h2>
+                    <p><strong>Botella PET:</strong> Depositar en contenedor amarillo (envases)</p>
+                    <p><strong>Tapón de plástico:</strong> Depositar en contenedor amarillo</p>
+                    <p><strong>Etiqueta:</strong> Depositar en contenedor amarillo</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Información de la Empresa</h2>
+                    <p><strong>Distribuido por:</strong> [Your Company Name]</p>
+                    <p><strong>Dirección:</strong> [Your EU Address]</p>
+                    <p><strong>Contacto:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Sitio web:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+            
+            <!-- French Content -->
+            <div id="info-fr" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Retour à la sélection de langue</button>
+                
+                <div class="info-section">
+                    <h2>📋 Informations Nutritionnelles Akvile Beauty Water</h2>
+                    <p><strong>Valeurs nutritionnelles pour 100ml:</strong></p>
+                    <ul>
+                        <li>Énergie: 8 kcal / 34 kJ</li>
+                        <li>Matières grasses: 0g (dont acides gras saturés: 0g)</li>
+                        <li>Glucides: 0,5g (dont sucres: 0g)</li>
+                        <li>Protéines: 0,8g (collagène marin: 0,83g)</li>
+                        <li>Sel: 0,01g</li>
+                    </ul>
+                    <p><strong>Par bouteille (600ml):</strong> 5g de collagène marin + 60mg vitamine C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Ingrédients</h2>
+                    <p>Eau minérale naturelle, collagène marin hydrolysé (peptides de collagène de poisson), vitamine C (acide L-ascorbique), arômes naturels, conservateurs: sorbate de potassium, acide citrique (régulateur d'acidité).</p>
+                    <p><strong>Allergènes:</strong> Contient du <strong>poisson</strong> (collagène marin)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Informations Produit</h2>
+                    <p><strong>Origine:</strong> Fabriqué en Lituanie selon les normes UE</p>
+                    <p><strong>Conservation:</strong> À conserver dans un endroit frais et sec, à l'abri de la lumière directe du soleil. Après ouverture, conserver au réfrigérateur et consommer dans les 24 heures.</p>
+                    <p><strong>À consommer de préférence avant:</strong> Voir date sur la bouteille</p>
+                    <p><strong>Contenu net:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Avertissements</h2>
+                    <ul>
+                        <li>Les compléments alimentaires ne se substituent pas à une alimentation variée et équilibrée</li>
+                        <li>Ne pas dépasser la dose journalière recommandée</li>
+                        <li>Tenir hors de portée des enfants</li>
+                        <li>Consulter un médecin en cas de grossesse ou d'allaitement</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Informations Société</h2>
+                    <p><strong>Distribué par:</strong> [Your Company Name]</p>
+                    <p><strong>Adresse:</strong> [Your EU Address]</p>
+                    <p><strong>Contact:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Site web:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+            
+            <!-- English Content -->
+            <div id="info-en" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Back to language selection</button>
+                
+                <div class="info-section">
+                    <h2>📋 Nutritional Information Akvile Beauty Water</h2>
+                    <p><strong>Nutritional values per 100ml:</strong></p>
+                    <ul>
+                        <li>Energy: 8 kcal / 34 kJ</li>
+                        <li>Fat: 0g (of which saturates: 0g)</li>
+                        <li>Carbohydrates: 0.5g (of which sugars: 0g)</li>
+                        <li>Protein: 0.8g (marine collagen: 0.83g)</li>
+                        <li>Salt: 0.01g</li>
+                    </ul>
+                    <p><strong>Per bottle (600ml):</strong> 5g marine collagen + 60mg vitamin C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Ingredients</h2>
+                    <p>Natural mineral water, hydrolyzed marine collagen (collagen peptides from fish), vitamin C (L-ascorbic acid), natural flavours, preservatives: potassium sorbate, citric acid (acidity regulator).</p>
+                    <p><strong>Allergens:</strong> Contains <strong>fish</strong> (marine collagen)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Product Information</h2>
+                    <p><strong>Origin:</strong> Produced in Lithuania according to EU standards</p>
+                    <p><strong>Storage:</strong> Store in a cool, dry place away from direct sunlight. After opening, keep refrigerated and consume within 24 hours.</p>
+                    <p><strong>Best before:</strong> See date on bottle</p>
+                    <p><strong>Net content:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Warnings</h2>
+                    <ul>
+                        <li>Food supplements should not replace a varied and balanced diet</li>
+                        <li>Do not exceed the recommended daily dose</li>
+                        <li>Keep out of reach of children</li>
+                        <li>Consult a doctor if pregnant or breastfeeding</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Company Information</h2>
+                    <p><strong>Distributed by:</strong> [Your Company Name]</p>
+                    <p><strong>Address:</strong> [Your EU Address]</p>
+                    <p><strong>Contact:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Website:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+            
+            <!-- German Content -->
+            <div id="info-de" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Zurück zur Sprachauswahl</button>
+                
+                <div class="info-section">
+                    <h2>📋 Nährwertangaben Akvile Beauty Water</h2>
+                    <p><strong>Nährwerte pro 100ml:</strong></p>
+                    <ul>
+                        <li>Energie: 8 kcal / 34 kJ</li>
+                        <li>Fett: 0g (davon gesättigte Fettsäuren: 0g)</li>
+                        <li>Kohlenhydrate: 0,5g (davon Zucker: 0g)</li>
+                        <li>Eiweiß: 0,8g (marines Kollagen: 0,83g)</li>
+                        <li>Salz: 0,01g</li>
+                    </ul>
+                    <p><strong>Pro Flasche (600ml):</strong> 5g marines Kollagen + 60mg Vitamin C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Zutaten</h2>
+                    <p>Natürliches Mineralwasser, hydrolysiertes marines Kollagen (Kollagenpeptide aus Fisch), Vitamin C (L-Ascorbinsäure), natürliche Aromen, Konservierungsstoffe: Kaliumsorbat, Zitronensäure (Säureregulator).</p>
+                    <p><strong>Allergene:</strong> Enthält <strong>Fisch</strong> (marines Kollagen)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Produktinformationen</h2>
+                    <p><strong>Herkunft:</strong> Hergestellt in Litauen nach EU-Standards</p>
+                    <p><strong>Lagerung:</strong> An einem kühlen, trockenen Ort und vor direkter Sonneneinstrahlung geschützt aufbewahren. Nach dem Öffnen kühl lagern und innerhalb von 24 Stunden verbrauchen.</p>
+                    <p><strong>Mindesthaltbarkeitsdatum:</strong> Siehe Datum auf der Flasche</p>
+                    <p><strong>Nettofüllmenge:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Warnhinweise</h2>
+                    <ul>
+                        <li>Nahrungsergänzungsmittel sollten nicht als Ersatz für eine ausgewogene und abwechslungsreiche Ernährung dienen</li>
+                        <li>Die empfohlene Tagesdosis nicht überschreiten</li>
+                        <li>Außerhalb der Reichweite von Kindern aufbewahren</li>
+                        <li>Bei Schwangerschaft oder Stillzeit einen Arzt konsultieren</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Unternehmensinformationen</h2>
+                    <p><strong>Vertrieben durch:</strong> [Your Company Name]</p>
+                    <p><strong>Adresse:</strong> [Your EU Address]</p>
+                    <p><strong>Kontakt:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Webseite:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+            
+            <!-- Portuguese Content -->
+            <div id="info-pt" class="info-content">
+                <button class="back-btn" onclick="showLanguageSelector()">← Voltar à seleção de idioma</button>
+                
+                <div class="info-section">
+                    <h2>📋 Informação Nutricional Akvile Beauty Water</h2>
+                    <p><strong>Valores nutricionais por 100ml:</strong></p>
+                    <ul>
+                        <li>Energia: 8 kcal / 34 kJ</li>
+                        <li>Gorduras: 0g (das quais saturadas: 0g)</li>
+                        <li>Hidratos de carbono: 0,5g (dos quais açúcares: 0g)</li>
+                        <li>Proteínas: 0,8g (colagénio marinho: 0,83g)</li>
+                        <li>Sal: 0,01g</li>
+                    </ul>
+                    <p><strong>Por garrafa (600ml):</strong> 5g de colagénio marinho + 60mg vitamina C</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🔬 Ingredientes</h2>
+                    <p>Água mineral natural, colagénio marinho hidrolisado (péptidos de colagénio de peixe), vitamina C (ácido L-ascórbico), aromas naturais, conservantes: sorbato de potássio, ácido cítrico (regulador de acidez).</p>
+                    <p><strong>Alergénios:</strong> Contém <strong>peixe</strong> (colagénio marinho)</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>✅ Informação do Produto</h2>
+                    <p><strong>Origem:</strong> Produzido na Lituânia segundo normas UE</p>
+                    <p><strong>Conservação:</strong> Conservar em local fresco e seco, ao abrigo da luz solar direta. Depois de aberto, conservar no frigorífico e consumir no prazo de 24 horas.</p>
+                    <p><strong>Consumir de preferência antes de:</strong> Ver data na garrafa</p>
+                    <p><strong>Conteúdo líquido:</strong> 600ml</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>⚠️ Avisos</h2>
+                    <ul>
+                        <li>Os suplementos alimentares não devem ser utilizados como substitutos de uma dieta variada e equilibrada</li>
+                        <li>Não exceder a dose diária recomendada</li>
+                        <li>Manter fora do alcance das crianças</li>
+                        <li>Consultar um médico em caso de gravidez ou amamentação</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>🏢 Informações da Empresa</h2>
+                    <p><strong>Distribuído por:</strong> [Your Company Name]</p>
+                    <p><strong>Morada:</strong> [Your EU Address]</p>
+                    <p><strong>Contacto:</strong> info@nbddrinks.eu</p>
+                    <p><strong>Website:</strong> www.nbddrinks.eu</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 NBD Drinks | Premium European Beverages</p>
+            <p style="margin-top: 10px;">🌱 Transparent. Honest. No BS.</p>
+        </div>
+    </div>
+    
+    <script>
+        function showLanguageSelector() {
+            document.getElementById('languageSelector').classList.add('active');
+            const infoContents = document.querySelectorAll('.info-content');
+            infoContents.forEach(content => content.classList.remove('active'));
+        }
+        
+        function showInfo(lang) {
+            document.getElementById('languageSelector').classList.remove('active');
+            const infoContents = document.querySelectorAll('.info-content');
+            infoContents.forEach(content => content.classList.remove('active'));
+            document.getElementById('info-' + lang).classList.add('active');
+        }
+    </script>
+</body>
+</html>
