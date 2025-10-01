@@ -250,22 +250,19 @@
 </head>
 <body>
     <header>
-        <svg width="150" height="40" viewBox="0 0 150 40" style="max-height: 45px;">
-            <text x="5" y="28" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#2C5F7D">No Bullsh!t</text>
-            <text x="5" y="38" font-family="Arial, sans-serif" font-size="10" fill="#7FB069">DRINKS</text>
-        </svg>
+        <img src="https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/logo.png" alt="NoBullshitDrinks Logo" class="logo">
     </header>
 
     <div class="container">
         <div id="languageSelection" class="language-selector">
-            <h2>🌍 Select Your Language</h2>
+            <h2>Select Your Language / Choisissez votre langue</h2>
             <div class="language-buttons">
-                <button class="lang-btn" onclick="selectLanguage('en')">🇬🇧 English</button>
-                <button class="lang-btn" onclick="selectLanguage('fr')">🇫🇷 Français</button>
-                <button class="lang-btn" onclick="selectLanguage('es')">🇪🇸 Español</button>
-                <button class="lang-btn" onclick="selectLanguage('it')">🇮🇹 Italiano</button>
-                <button class="lang-btn" onclick="selectLanguage('de')">🇩🇪 Deutsch</button>
-                <button class="lang-btn" onclick="selectLanguage('pt')">🇵🇹 Português</button>
+                <button class="lang-btn" onclick="selectLanguage('en')">English</button>
+                <button class="lang-btn" onclick="selectLanguage('fr')">Français</button>
+                <button class="lang-btn" onclick="selectLanguage('es')">Español</button>
+                <button class="lang-btn" onclick="selectLanguage('it')">Italiano</button>
+                <button class="lang-btn" onclick="selectLanguage('de')">Deutsch</button>
+                <button class="lang-btn" onclick="selectLanguage('pt')">Português</button>
             </div>
         </div>
 
@@ -277,237 +274,239 @@
 
     <script>
         const productImages = {
-            'main/Akvile_red_berry_400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmU2ZWUiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmNjY3NyIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJlcnJ5PC90ZXh0Pjwvc3ZnPg==',
-            'main/Akvile_lime_400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlNmZmZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iIzY2ZmY2NiIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxpbWU8L3RleHQ+PC9zdmc+',
-            'main/Akvile_peach_400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmY0ZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmYmI2NiIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBlYWNoPC90ZXh0Pjwvc3ZnPg==',
-            'main/Akvile_lemon_400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmZmZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmZmY2NiIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxlbW9uPC90ZXh0Pjwvc3ZnPg==',
-            'main/Akvile Oragne -400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmY0ZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmYWE2NiIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9yYW5nZTwvdGV4dD48L3N2Zz4=',
-            'main/Voss Plus 400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlNmY0ZmYiLz48cmVjdCB4PSIyNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1MCIgcng9IjQiIGZpbGw9IiM2NmJiZmYiLz48dGV4dCB4PSI0MCIgeT0iNzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5WT1NTPC90ZXh0Pjwvc3ZnPg==',
-            'main/Strawberry Ginger Voss 400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmMGYwZjAiLz48cmVjdCB4PSIyOCIgeT0iMjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0MCIgcng9IjIiIGZpbGw9IiM5OTk5OTkiLz48dGV4dCB4PSI0MCIgeT0iNzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DYW48L3RleHQ+PC9zdmc+',
-            'main/Pre Post Green Tea Akvile 400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlNmZmZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iIzY2Y2M2NiIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkdyZWVuIFRlYTwvdGV4dD48L3N2Zz4=',
-            'main/Digestif Water Akvile 400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmY0ZTYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmYWE0NCIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkdpbmdlcjwvdGV4dD48L3N2Zz4=',
-            'main/Beauty Water Akvile 400.jpg': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmU2ZjQiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2ZmYmJkZCIvPjx0ZXh0IHg9IjQwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJlYXV0eTwvdGV4dD48L3N2Zz4='
+            'red-berry': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_red_berry_400.jpg',
+            'tahiti-lime': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_lime_400.jpg',
+            'peach': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_peach_400.jpg',
+            'lemon': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_lemon_400.jpg',
+            'orange': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile Oragne -400.jpg',
+            'voss-plus': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Voss Plus 400.jpg',
+            'voss-strawberry': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Strawberry Ginger Voss 400.jpg',
+            'voss-lime-mint': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Lime Mint Voss 400.jpg',
+            'voss-lemon-cucumber': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Lemon Cucumber Voss 400.jpg',
+            'green-tea': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Pre Post Green Tea Akvile 400.jpg',
+            'digestif': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Digestif Water Akvile 400.jpg',
+            'beauty': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Beauty Water Akvile 400.jpg'
         };
 
         const products = {
             en: [
                 {
-                    name: "Akvile Red Berry Sparkling",
+                    name: "Akvile Red Berry Sparkling 1.5L",
                     category: "Flavoured Water",
-                    image: productImages['main/Akvile_red_berry_400.jpg'],
-                    ingredients: "Natural mineral water, CO2, natural red berry flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g | Protein: 0g",
+                    image: productImages['red-berry'],
+                    ingredients: "Water, CO2, natural red berry flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Tahiti Lime Sparkling",
+                    name: "Akvile Tahiti Lime Sparkling 1.5L",
                     category: "Flavoured Water",
-                    image: productImages['main/Akvile_lime_400.jpg'],
-                    ingredients: "Natural mineral water, CO2, natural lime flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g | Protein: 0g",
+                    image: productImages['tahiti-lime'],
+                    ingredients: "Water, CO2, natural lime flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Peach Sparkling",
+                    name: "Akvile Peach Sparkling 1.5L",
                     category: "Flavoured Water",
-                    image: productImages['main/Akvile_peach_400.jpg'],
-                    ingredients: "Natural mineral water, CO2, natural peach flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g | Protein: 0g",
+                    image: productImages['peach'],
+                    ingredients: "Water, CO2, natural peach flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Lemon Sparkling",
+                    name: "Akvile Lemon Sparkling 1.5L",
                     category: "Flavoured Water",
-                    image: productImages['main/Akvile_lemon_400.jpg'],
-                    ingredients: "Natural mineral water, CO2, natural lemon flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g | Protein: 0g",
+                    image: productImages['lemon'],
+                    ingredients: "Water, CO2, natural lemon flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
-                    contact: {phone: "email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Orange Sparkling",
+                    name: "Akvile Orange Sparkling 0.6L",
                     category: "Flavoured Water",
-                    image: productImages['main/Akvile Oragne -400.jpg'],
-                    ingredients: "Natural mineral water, CO2, natural orange flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g | Protein: 0g",
+                    image: productImages['orange'],
+                    ingredients: "Water, CO2, natural orange flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
-                    contact: {phone: "email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Functional Drink",
-                    image: productImages['main/Voss Plus 400.jpg'],
-                    ingredients: "Artesian water, vitamins (B3, B6, B12), natural flavours",
-                    nutrition: "Energy: 0 kcal | Vitamins: B3, B6, B12",
+                    image: productImages['voss-plus'],
+                    ingredients: "Artesian water from Norway, niacin (vitamin B3), pantothenic acid (vitamin B5), vitamin B6, biotin (vitamin B7), vitamin B12",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g, Vitamins B3/B5/B6/B7/B12",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Voss Strawberry Ginger",
+                    name: "Voss Strawberry Ginger 0.33L",
                     category: "Flavoured Water",
-                    image: productImages['main/Strawberry Ginger Voss 400.jpg'],
-                    ingredients: "Artesian water, natural strawberry & ginger flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g",
+                    image: productImages['voss-strawberry'],
+                    ingredients: "Artesian water from Norway, natural strawberry and ginger flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "Aluminum can - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Voss Lime Mint",
+                    name: "Voss Lime Mint 0.33L",
                     category: "Flavoured Water",
-                    image: productImages['main/Mint Lime Voss 400.jpg'],
-                    ingredients: "Artesian water, natural lime & mint flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g",
+                    image: productImages['voss-lime-mint'],
+                    ingredients: "Artesian water from Norway, natural lime and mint flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "Aluminum can - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Voss Lemon Cucumber",
+                    name: "Voss Lemon Cucumber 0.33L",
                     category: "Flavoured Water",
-                    image: productImages['main/Lemon Cucumber Voss 400.jpg'],
-                    ingredients: "Artesian water, natural lemon & cucumber flavour",
-                    nutrition: "Energy: 0 kcal | Fat: 0g | Carbs: 0g",
+                    image: productImages['voss-lemon-cucumber'],
+                    ingredients: "Artesian water from Norway, natural lemon and cucumber flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "Aluminum can - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Pre + Post Green Tea",
+                    name: "Akvile Pre + Post Green Tea 0.6L",
                     category: "Functional Drink",
-                    image: productImages['main/Pre Post Green Tea Akvile 400.jpg'],
-                    ingredients: "Natural mineral water, green tea extract (20mg), natural flavour",
-                    nutrition: "Energy: 0 kcal | Green Tea: 20mg",
+                    image: productImages['green-tea'],
+                    ingredients: "Water, green tea extract (20mg polyphenols), natural flavouring",
+                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g, Green tea polyphenols 3.3mg",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Digestif Water",
+                    name: "Akvile Digestif Water 0.6L",
                     category: "Functional Drink",
-                    image: productImages['main/Digestif Water Akvile 400.jpg'],
-                    ingredients: "Natural mineral water, apple cider vinegar, ginger juice (3ml), natural flavour",
-                    nutrition: "Energy: 0 kcal | Ginger: 3ml",
+                    image: productImages['digestif'],
+                    ingredients: "Water, apple cider vinegar (1%), ginger juice (0.5%), natural flavouring",
+                    nutrition: "Per 100ml: Energy 2 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
-                    name: "Akvile Beauty Water",
+                    name: "Akvile Beauty Water 0.6L",
                     category: "Functional Drink",
-                    image: productImages['main/Beauty Water Akvile 400.jpg'],
-                    ingredients: "Natural mineral water, marine collagen (5g), peach juice, natural flavour",
-                    nutrition: "Energy: 15 kcal | Collagen: 5g",
+                    image: productImages['beauty'],
+                    ingredients: "Water, marine collagen peptides (0.83%), peach juice from concentrate (1%), natural peach flavouring",
+                    nutrition: "Per 100ml: Energy 7 kJ/2 kcal, Fat 0g, Carbohydrates 0.2g (sugars 0.2g), Protein 0.4g, Salt 0.01g, Collagen 0.83g",
                     recycling: "PET bottle - Recyclable",
                     contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ],
             fr: [
                 {
-                    name: "Akvile Red Berry Pétillante",
+                    name: "Akvile Red Berry Pétillante 1.5L",
                     category: "Eau Aromatisée",
                     image: productImages['red-berry'],
-                    ingredients: "Eau minérale naturelle, CO2, arôme naturel fruits rouges",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g | Protéines: 0g",
+                    ingredients: "Eau, CO2, arôme naturel de fruits rouges",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Tahiti Lime Pétillante 1.5L",
                     category: "Eau Aromatisée",
                     image: productImages['tahiti-lime'],
-                    ingredients: "Eau minérale naturelle, CO2, arôme naturel citron vert",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g | Protéines: 0g",
+                    ingredients: "Eau, CO2, arôme naturel de citron vert",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Pêche Pétillante 1.5L",
                     category: "Eau Aromatisée",
                     image: productImages['peach'],
-                    ingredients: "Eau minérale naturelle, CO2, arôme naturel pêche",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g | Protéines: 0g",
+                    ingredients: "Eau, CO2, arôme naturel de pêche",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Citron Pétillante 1.5L",
                     category: "Eau Aromatisée",
                     image: productImages['lemon'],
-                    ingredients: "Eau minérale naturelle, CO2, arôme naturel citron",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g | Protéines: 0g",
+                    ingredients: "Eau, CO2, arôme naturel de citron",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Orange Pétillante 0.6L",
                     category: "Eau Aromatisée",
                     image: productImages['orange'],
-                    ingredients: "Eau minérale naturelle, CO2, arôme naturel orange",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g | Protéines: 0g",
+                    ingredients: "Eau, CO2, arôme naturel d'orange",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Boisson Fonctionnelle",
                     image: productImages['voss-plus'],
-                    ingredients: "Eau artésienne, vitamines (B3, B6, B12), arômes naturels",
-                    nutrition: "Énergie: 0 kcal | Vitamines: B3, B6, B12",
+                    ingredients: "Eau artésienne de Norvège, niacine (vitamine B3), acide pantothénique (vitamine B5), vitamine B6, biotine (vitamine B7), vitamine B12",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g, Vitamines B3/B5/B6/B7/B12",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Fraise Gingembre 0.33L",
                     category: "Eau Aromatisée",
-                    image: productImages['voss-can'],
-                    ingredients: "Eau artésienne, arôme naturel fraise & gingembre",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g",
+                    image: productImages['voss-strawberry'],
+                    ingredients: "Eau artésienne de Norvège, arôme naturel de fraise et gingembre",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Canette aluminium - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Citron Vert Menthe 0.33L",
                     category: "Eau Aromatisée",
-                    image: productImages['voss-can'],
-                    ingredients: "Eau artésienne, arôme naturel citron vert & menthe",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g",
+                    image: productImages['voss-lime-mint'],
+                    ingredients: "Eau artésienne de Norvège, arôme naturel de citron vert et menthe",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Canette aluminium - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Citron Concombre 0.33L",
                     category: "Eau Aromatisée",
-                    image: productImages['voss-can'],
-                    ingredients: "Eau artésienne, arôme naturel citron & concombre",
-                    nutrition: "Énergie: 0 kcal | Lipides: 0g | Glucides: 0g",
+                    image: productImages['voss-lemon-cucumber'],
+                    ingredients: "Eau artésienne de Norvège, arôme naturel de citron et concombre",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Canette aluminium - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Pre + Post Thé Vert 0.6L",
                     category: "Boisson Fonctionnelle",
                     image: productImages['green-tea'],
-                    ingredients: "Eau minérale naturelle, extrait de thé vert (20mg), arôme naturel",
-                    nutrition: "Énergie: 0 kcal | Thé vert: 20mg",
+                    ingredients: "Eau, extrait de thé vert (20mg polyphénols), arôme naturel",
+                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g, Polyphénols de thé vert 3,3mg",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Digestif Water 0.6L",
                     category: "Boisson Fonctionnelle",
                     image: productImages['digestif'],
-                    ingredients: "Eau minérale naturelle, vinaigre de cidre, jus de gingembre (3ml), arôme naturel",
-                    nutrition: "Énergie: 0 kcal | Gingembre: 3ml",
+                    ingredients: "Eau, vinaigre de cidre (1%), jus de gingembre (0,5%), arôme naturel",
+                    nutrition: "Pour 100ml: Énergie 2 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Beauty Water 0.6L",
                     category: "Boisson Fonctionnelle",
                     image: productImages['beauty'],
-                    ingredients: "Eau minérale naturelle, collagène marin (5g), jus de pêche, arôme naturel",
-                    nutrition: "Énergie: 15 kcal | Collagène: 5g",
+                    ingredients: "Eau, peptides de collagène marin (0,83%), jus de pêche à base de concentré (1%), arôme naturel de pêche",
+                    nutrition: "Pour 100ml: Énergie 7 kJ/2 kcal, Lipides 0g, Glucides 0,2g (dont sucres 0,2g), Protéines 0,4g, Sel 0,01g, Collagène 0,83g",
                     recycling: "Bouteille PET - Recyclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ],
             es: [
@@ -515,28 +514,28 @@
                     name: "Akvile Red Berry Gasificada 1.5L",
                     category: "Agua Aromatizada",
                     image: productImages['red-berry'],
-                    ingredients: "Agua mineral natural, CO2, aroma natural de frutos rojos",
-                    nutrition: "Energía: 0 kcal | Grasas: 0g | Carbohidratos: 0g | Proteínas: 0g",
+                    ingredients: "Agua, CO2, aroma natural de frutos rojos",
+                    nutrition: "Por 100ml: Energía 0 kJ/0 kcal, Grasas 0g, Carbohidratos 0g, Proteínas 0g, Sal 0g",
                     recycling: "Botella PET - Reciclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Bebida Funcional",
                     image: productImages['voss-plus'],
-                    ingredients: "Agua artesiana, vitaminas (B3, B6, B12), aromas naturales",
-                    nutrition: "Energía: 0 kcal | Vitaminas: B3, B6, B12",
+                    ingredients: "Agua artesiana de Noruega, niacina (vitamina B3), ácido pantoténico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
+                    nutrition: "Por 100ml: Energía 0 kJ/0 kcal, Grasas 0g, Carbohidratos 0g, Proteínas 0g, Sal 0g, Vitaminas B3/B5/B6/B7/B12",
                     recycling: "Botella PET - Reciclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Beauty Water 0.6L",
                     category: "Bebida Funcional",
                     image: productImages['beauty'],
-                    ingredients: "Agua mineral natural, colágeno marino (5g), zumo de melocotón, aroma natural",
-                    nutrition: "Energía: 15 kcal | Colágeno: 5g",
+                    ingredients: "Agua, péptidos de colágeno marino (0,83%), zumo de melocotón a partir de concentrado (1%), aroma natural de melocotón",
+                    nutrition: "Por 100ml: Energía 7 kJ/2 kcal, Grasas 0g, Carbohidratos 0,2g (azúcares 0,2g), Proteínas 0,4g, Sal 0,01g, Colágeno 0,83g",
                     recycling: "Botella PET - Reciclable",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ],
             it: [
@@ -544,28 +543,28 @@
                     name: "Akvile Red Berry Frizzante 1.5L",
                     category: "Acqua Aromatizzata",
                     image: productImages['red-berry'],
-                    ingredients: "Acqua minerale naturale, CO2, aroma naturale di frutti rossi",
-                    nutrition: "Energia: 0 kcal | Grassi: 0g | Carboidrati: 0g | Proteine: 0g",
+                    ingredients: "Acqua, CO2, aroma naturale di frutti rossi",
+                    nutrition: "Per 100ml: Energia 0 kJ/0 kcal, Grassi 0g, Carboidrati 0g, Proteine 0g, Sale 0g",
                     recycling: "Bottiglia PET - Riciclabile",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Bevanda Funzionale",
                     image: productImages['voss-plus'],
-                    ingredients: "Acqua artesiana, vitamine (B3, B6, B12), aromi naturali",
-                    nutrition: "Energia: 0 kcal | Vitamine: B3, B6, B12",
+                    ingredients: "Acqua artesiana dalla Norvegia, niacina (vitamina B3), acido pantotenico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
+                    nutrition: "Per 100ml: Energia 0 kJ/0 kcal, Grassi 0g, Carboidrati 0g, Proteine 0g, Sale 0g, Vitamine B3/B5/B6/B7/B12",
                     recycling: "Bottiglia PET - Riciclabile",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Beauty Water 0.6L",
                     category: "Bevanda Funzionale",
                     image: productImages['beauty'],
-                    ingredients: "Acqua minerale naturale, collagene marino (5g), succo di pesca, aroma naturale",
-                    nutrition: "Energia: 15 kcal | Collagene: 5g",
+                    ingredients: "Acqua, peptidi di collagene marino (0,83%), succo di pesca da concentrato (1%), aroma naturale di pesca",
+                    nutrition: "Per 100ml: Energia 7 kJ/2 kcal, Grassi 0g, Carboidrati 0,2g (zuccheri 0,2g), Proteine 0,4g, Sale 0,01g, Collagene 0,83g",
                     recycling: "Bottiglia PET - Riciclabile",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ],
             de: [
@@ -573,28 +572,28 @@
                     name: "Akvile Red Berry Sprudel 1.5L",
                     category: "Aromatisiertes Wasser",
                     image: productImages['red-berry'],
-                    ingredients: "Natürliches Mineralwasser, CO2, natürliches Beerenaroma",
-                    nutrition: "Energie: 0 kcal | Fett: 0g | Kohlenhydrate: 0g | Eiweiß: 0g",
+                    ingredients: "Wasser, CO2, natürliches Beerenaroma",
+                    nutrition: "Pro 100ml: Energie 0 kJ/0 kcal, Fett 0g, Kohlenhydrate 0g, Eiweiß 0g, Salz 0g",
                     recycling: "PET-Flasche - Recycelbar",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Funktionsgetränk",
                     image: productImages['voss-plus'],
-                    ingredients: "Artesisches Wasser, Vitamine (B3, B6, B12), natürliche Aromen",
-                    nutrition: "Energie: 0 kcal | Vitamine: B3, B6, B12",
+                    ingredients: "Artesisches Wasser aus Norwegen, Niacin (Vitamin B3), Pantothensäure (Vitamin B5), Vitamin B6, Biotin (Vitamin B7), Vitamin B12",
+                    nutrition: "Pro 100ml: Energie 0 kJ/0 kcal, Fett 0g, Kohlenhydrate 0g, Eiweiß 0g, Salz 0g, Vitamine B3/B5/B6/B7/B12",
                     recycling: "PET-Flasche - Recycelbar",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Beauty Water 0.6L",
                     category: "Funktionsgetränk",
                     image: productImages['beauty'],
-                    ingredients: "Natürliches Mineralwasser, Meereskollagen (5g), Pfirsichsaft, natürliches Aroma",
-                    nutrition: "Energie: 15 kcal | Kollagen: 5g",
+                    ingredients: "Wasser, Meereskollagen-Peptide (0,83%), Pfirsichsaft aus Konzentrat (1%), natürliches Pfirsicharoma",
+                    nutrition: "Pro 100ml: Energie 7 kJ/2 kcal, Fett 0g, Kohlenhydrate 0,2g (Zucker 0,2g), Eiweiß 0,4g, Salz 0,01g, Kollagen 0,83g",
                     recycling: "PET-Flasche - Recycelbar",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ],
             pt: [
@@ -602,28 +601,28 @@
                     name: "Akvile Red Berry Gasosa 1.5L",
                     category: "Água Aromatizada",
                     image: productImages['red-berry'],
-                    ingredients: "Água mineral natural, CO2, aroma natural de frutos vermelhos",
-                    nutrition: "Energia: 0 kcal | Gorduras: 0g | Carboidratos: 0g | Proteínas: 0g",
+                    ingredients: "Água, CO2, aroma natural de frutos vermelhos",
+                    nutrition: "Por 100ml: Energia 0 kJ/0 kcal, Gorduras 0g, Carboidratos 0g, Proteínas 0g, Sal 0g",
                     recycling: "Garrafa PET - Reciclável",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Voss Plus 0.5L",
                     category: "Bebida Funcional",
                     image: productImages['voss-plus'],
-                    ingredients: "Água artesiana, vitaminas (B3, B6, B12), aromas naturais",
-                    nutrition: "Energia: 0 kcal | Vitaminas: B3, B6, B12",
+                    ingredients: "Água artesiana da Noruega, niacina (vitamina B3), ácido pantoténico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
+                    nutrition: "Por 100ml: Energia 0 kJ/0 kcal, Gorduras 0g, Carboidratos 0g, Proteínas 0g, Sal 0g, Vitaminas B3/B5/B6/B7/B12",
                     recycling: "Garrafa PET - Reciclável",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 },
                 {
                     name: "Akvile Beauty Water 0.6L",
                     category: "Bebida Funcional",
                     image: productImages['beauty'],
-                    ingredients: "Água mineral natural, colagénio marinho (5g), sumo de pêssego, aroma natural",
-                    nutrition: "Energia: 15 kcal | Colagénio: 5g",
+                    ingredients: "Água, péptidos de colagénio marinho (0,83%), sumo de pêssego a partir de concentrado (1%), aroma natural de pêssego",
+                    nutrition: "Por 100ml: Energia 7 kJ/2 kcal, Gorduras 0g, Carboidratos 0,2g (açúcares 0,2g), Proteínas 0,4g, Sal 0,01g, Colagénio 0,83g",
                     recycling: "Garrafa PET - Reciclável",
-                    contact: {phone: "+33 6 28 28 82 88", email: "sales@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
+                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
                 }
             ]
         };
@@ -662,20 +661,19 @@
                     </div>
                     <div class="product-details" id="details-${index}">
                         <div class="info-section">
-                            <h4>📝 ${lang === 'fr' ? 'Ingrédients' : lang === 'es' ? 'Ingredientes' : lang === 'it' ? 'Ingredienti' : lang === 'de' ? 'Zutaten' : lang === 'pt' ? 'Ingredientes' : 'Ingredients'}</h4>
+                            <h4>${lang === 'fr' ? 'Ingrédients' : lang === 'es' ? 'Ingredientes' : lang === 'it' ? 'Ingredienti' : lang === 'de' ? 'Zutaten' : lang === 'pt' ? 'Ingredientes' : 'Ingredients'}</h4>
                             <p>${product.ingredients}</p>
                         </div>
                         <div class="info-section">
-                            <h4>🥗 ${lang === 'fr' ? 'Valeurs Nutritionnelles' : lang === 'es' ? 'Valores Nutricionales' : lang === 'it' ? 'Valori Nutrizionali' : lang === 'de' ? 'Nährwerte' : lang === 'pt' ? 'Valores Nutricionais' : 'Nutritional Info'}</h4>
+                            <h4>${lang === 'fr' ? 'Valeurs Nutritionnelles' : lang === 'es' ? 'Valores Nutricionales' : lang === 'it' ? 'Valori Nutrizionali' : lang === 'de' ? 'Nährwerte' : lang === 'pt' ? 'Valores Nutricionais' : 'Nutritional Info'}</h4>
                             <p>${product.nutrition}</p>
                         </div>
                         <div class="info-section">
-                            <h4>♻️ ${lang === 'fr' ? 'Recyclage' : lang === 'es' ? 'Reciclaje' : lang === 'it' ? 'Riciclaggio' : lang === 'de' ? 'Recycling' : lang === 'pt' ? 'Reciclagem' : 'Recycling'}</h4>
+                            <h4>${lang === 'fr' ? 'Recyclage' : lang === 'es' ? 'Reciclaje' : lang === 'it' ? 'Riciclaggio' : lang === 'de' ? 'Recycling' : lang === 'pt' ? 'Reciclagem' : 'Recycling'}</h4>
                             <p>${product.recycling}</p>
                         </div>
                         <div class="contact-info">
-                            <h4>📞 Contact</h4>
-                            <p><strong>${lang === 'fr' ? 'Téléphone' : lang === 'es' ? 'Teléfono' : lang === 'it' ? 'Telefono' : lang === 'de' ? 'Telefon' : lang === 'pt' ? 'Telefone' : 'Phone'}:</strong> ${product.contact.phone}</p>
+                            <h4>Contact</h4>
                             <p><strong>Email:</strong> <a href="mailto:${product.contact.email}">${product.contact.email}</a></p>
                             <p><strong>Web:</strong> <a href="https://${product.contact.web}" target="_blank">${product.contact.web}</a></p>
                         </div>
