@@ -14,53 +14,235 @@
     </script>
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
-        header { background: white; padding: 12px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; text-align: center; }
-        .logo { max-height: 45px; height: auto; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .language-selector { margin: 15px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; }
-        .language-selector h2 { margin-bottom: 15px; color: #2C5F7D; font-size: 18px; }
-        .language-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .lang-btn { padding: 12px 24px; background: #2C5F7D; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
-        .lang-btn:hover { background: #1a3d52; }
-        .product-selector { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
-        .product-selector h2 { color: #2C5F7D; margin-bottom: 20px; font-size: 22px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .product-card { background: #f9f9f9; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
-        .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: #2C5F7D; }
-        .product-card h3 { color: #2C5F7D; font-size: 16px; margin-bottom: 5px; }
-        .product-card p { font-size: 13px; color: #666; }
-        .product-info { background: white; border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
-        .back-btn { background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; font-size: 14px; }
-        .back-btn:hover { background: #5a6268; }
-        .product-info h2 { color: #2C5F7D; margin-bottom: 10px; font-size: 24px; }
-        .product-info h3 { color: #2C5F7D; margin-top: 25px; margin-bottom: 10px; font-size: 18px; border-bottom: 2px solid #2C5F7D; padding-bottom: 5px; }
-        .info-section { margin: 15px 0; }
-        .info-label { font-weight: bold; color: #555; margin-bottom: 5px; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #2C5F7D; color: white; font-weight: 600; }
-        .hidden { display: none; }
-        footer { background: white; padding: 15px; margin-top: 40px; text-align: center; border-top: 3px solid #2C5F7D; }
-        .company-info { max-width: 600px; margin: 0 auto; text-align: center; }
-        .company-info h3 { color: #2C5F7D; margin-bottom: 10px; }
-        .company-info p { margin: 5px 0; color: #666; }
-        .company-info a { color: #2C5F7D; text-decoration: none; }
-        .company-info a:hover { text-decoration: underline; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        header {
+            background: white;
+            padding: 12px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .logo {
+            max-height: 45px;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .language-selector {
+            margin: 15px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        
+        .language-selector h2 {
+            margin-bottom: 15px;
+            color: #2C5F7D;
+            font-size: 18px;
+        }
+        
+        .language-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .lang-btn {
+            padding: 12px 24px;
+            background: #2C5F7D;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: #1a3d52;
+        }
+        
+        .product-selector {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .product-selector h2 {
+            color: #2C5F7D;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .product-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-color: #2C5F7D;
+        }
+        
+        .product-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        .product-text {
+            flex: 1;
+        }
+        
+        .product-card h3 {
+            color: #2C5F7D;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .product-card p {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .product-info {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        
+        .product-info h2 {
+            color: #2C5F7D;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .product-info h3 {
+            color: #2C5F7D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 2px solid #2C5F7D;
+            padding-bottom: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            background: white;
+            padding: 15px;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 3px solid #2C5F7D;
+        }
+        
+        .company-info {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .company-info h3 {
+            color: #2C5F7D;
+            margin-bottom: 10px;
+        }
+        
+        .company-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .company-info a {
+            color: #2C5F7D;
+            text-decoration: none;
+        }
+        
+        .company-info a:hover {
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .language-buttons { flex-direction: column; }
-            .lang-btn { width: 100%; }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-buttons {
+                flex-direction: column;
+            }
+            
+            .lang-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER AVEC LOGO -->
     <header>
         <img src="logo.png" alt="NoBullshitDrinks Logo" class="logo" onerror="this.style.display='none'">
     </header>
 
     <div class="container">
+        <!-- SÉLECTION DE LANGUE -->
         <div id="languageSelector" class="language-selector">
             <h2>Select Your Language / Choisissez votre langue</h2>
             <div class="language-buttons">
@@ -73,18 +255,21 @@
             </div>
         </div>
 
+        <!-- SÉLECTION DE PRODUIT -->
         <div id="productSelector" class="product-selector hidden">
             <button class="back-btn" onclick="backToLanguages()">← Back to Languages</button>
             <h2 id="productSelectorTitle">Select a Product</h2>
             <div id="productGrid" class="product-grid"></div>
         </div>
 
+        <!-- INFORMATIONS PRODUIT -->
         <div id="productInfo" class="product-info hidden">
             <button class="back-btn" onclick="backToProducts()">← Back to Products</button>
             <div id="productContent"></div>
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <div class="company-info">
             <h3>NoBullshitDrinks</h3>
@@ -99,28 +284,28 @@
         let currentLanguage = '';
         
         const translations = {
-            en: { title: 'Select a Product', backToLang: '← Back to Languages', backToProd: '← Back to Products', nutritionalInfo: 'Nutritional Information', per100ml: 'Per 100ml', perBottle: 'Per Bottle', ingredients: 'Ingredients', allergens: 'Allergens', storage: 'Storage', bestBefore: 'Best Before', netContent: 'Net Content', warnings: 'Warnings', distributed: 'Distributed by' },
-            fr: { title: 'Sélectionnez un produit', backToLang: '← Retour aux langues', backToProd: '← Retour aux produits', nutritionalInfo: 'Informations nutritionnelles', per100ml: 'Pour 100ml', perBottle: 'Par bouteille', ingredients: 'Ingrédients', allergens: 'Allergènes', storage: 'Conservation', bestBefore: 'À consommer avant', netContent: 'Contenu net', warnings: 'Avertissements', distributed: 'Distribué par' },
-            it: { title: 'Seleziona un prodotto', backToLang: '← Torna alle lingue', backToProd: '← Torna ai prodotti', nutritionalInfo: 'Informazioni nutrizionali', per100ml: 'Per 100ml', perBottle: 'Per bottiglia', ingredients: 'Ingredienti', allergens: 'Allergeni', storage: 'Conservazione', bestBefore: 'Da consumarsi entro', netContent: 'Contenuto netto', warnings: 'Avvertenze', distributed: 'Distribuito da' },
-            es: { title: 'Seleccione un producto', backToLang: '← Volver a idiomas', backToProd: '← Volver a productos', nutritionalInfo: 'Información nutricional', per100ml: 'Por 100ml', perBottle: 'Por botella', ingredients: 'Ingredientes', allergens: 'Alérgenos', storage: 'Conservación', bestBefore: 'Consumir antes de', netContent: 'Contenido neto', warnings: 'Advertencias', distributed: 'Distribuido por' },
-            pt: { title: 'Selecione um produto', backToLang: '← Voltar aos idiomas', backToProd: '← Voltar aos produtos', nutritionalInfo: 'Informação nutricional', per100ml: 'Por 100ml', perBottle: 'Por garrafa', ingredients: 'Ingredientes', allergens: 'Alergénios', storage: 'Conservação', bestBefore: 'Consumir antes de', netContent: 'Conteúdo líquido', warnings: 'Avisos', distributed: 'Distribuído por' },
-            de: { title: 'Wählen Sie ein Produkt', backToLang: '← Zurück zu Sprachen', backToProd: '← Zurück zu Produkten', nutritionalInfo: 'Nährwertangaben', per100ml: 'Pro 100ml', perBottle: 'Pro Flasche', ingredients: 'Zutaten', allergens: 'Allergene', storage: 'Lagerung', bestBefore: 'Mindesthaltbar bis', netContent: 'Nettoinhalt', warnings: 'Warnhinweise', distributed: 'Vertrieben durch' }
+            en: { title: 'Select a Product', backToLang: '← Back to Languages', backToProd: '← Back to Products', nutritionalInfo: 'Nutritional Information', per100ml: 'Per 100ml', perBottle: 'Per Bottle', ingredients: 'Ingredients', warnings: 'Warnings' },
+            fr: { title: 'Sélectionnez un produit', backToLang: '← Retour aux langues', backToProd: '← Retour aux produits', nutritionalInfo: 'Informations nutritionnelles', per100ml: 'Pour 100ml', perBottle: 'Par bouteille', ingredients: 'Ingrédients', warnings: 'Avertissements' },
+            it: { title: 'Seleziona un prodotto', backToLang: '← Torna alle lingue', backToProd: '← Torna ai prodotti', nutritionalInfo: 'Informazioni nutrizionali', per100ml: 'Per 100ml', perBottle: 'Per bottiglia', ingredients: 'Ingredienti', warnings: 'Avvertenze' },
+            es: { title: 'Seleccione un producto', backToLang: '← Volver a idiomas', backToProd: '← Volver a productos', nutritionalInfo: 'Información nutricional', per100ml: 'Por 100ml', perBottle: 'Por botella', ingredients: 'Ingredientes', warnings: 'Advertencias' },
+            pt: { title: 'Selecione um produto', backToLang: '← Voltar aos idiomas', backToProd: '← Voltar aos produtos', nutritionalInfo: 'Informação nutricional', per100ml: 'Por 100ml', perBottle: 'Por garrafa', ingredients: 'Ingredientes', warnings: 'Avisos' },
+            de: { title: 'Wählen Sie ein Produkt', backToLang: '← Zurück zu Sprachen', backToProd: '← Zurück zu Produkten', nutritionalInfo: 'Nährwertangaben', per100ml: 'Pro 100ml', perBottle: 'Pro Flasche', ingredients: 'Zutaten', warnings: 'Warnhinweise' }
         };
 
         // Définition complète des 12 produits pour TOUTES les langues
         const allProducts = [
-            { id: 'beauty-water', name: { en: 'Akvile Beauty Water', fr: 'Akvile Beauty Water', it: 'Akvile Beauty Water', es: 'Akvile Beauty Water', pt: 'Akvile Beauty Water', de: 'Akvile Beauty Water' }, size: '0.6L' },
-            { id: 'digestive-water', name: { en: 'Akvile Digestive Water', fr: 'Akvile Digestive Water', it: 'Akvile Digestive Water', es: 'Akvile Digestive Water', pt: 'Akvile Digestive Water', de: 'Akvile Digestive Water' }, size: '0.6L' },
-            { id: 'green-tea', name: { en: 'Akvile Pre+Post Green Tea', fr: 'Akvile Pre+Post Green Tea', it: 'Akvile Pre+Post Green Tea', es: 'Akvile Pre+Post Green Tea', pt: 'Akvile Pre+Post Green Tea', de: 'Akvile Pre+Post Green Tea' }, size: '0.6L' },
-            { id: 'voss-plus', name: { en: 'Voss Plus', fr: 'Voss Plus', it: 'Voss Plus', es: 'Voss Plus', pt: 'Voss Plus', de: 'Voss Plus' }, size: '0.5L' },
-            { id: 'lemon-sparkling', name: { en: 'Akvile Lemon Sparkling', fr: 'Akvile Lemon Sparkling', it: 'Akvile Lemon Sparkling', es: 'Akvile Lemon Sparkling', pt: 'Akvile Lemon Sparkling', de: 'Akvile Lemon Sparkling' }, size: '0.6L/1.5L' },
-            { id: 'lime-sparkling', name: { en: 'Akvile Tahiti Lime Sparkling', fr: 'Akvile Tahiti Lime Sparkling', it: 'Akvile Tahiti Lime Sparkling', es: 'Akvile Tahiti Lime Sparkling', pt: 'Akvile Tahiti Lime Sparkling', de: 'Akvile Tahiti Lime Sparkling' }, size: '0.6L/1.5L' },
-            { id: 'peach-sparkling', name: { en: 'Akvile Peach Sparkling', fr: 'Akvile Peach Sparkling', it: 'Akvile Peach Sparkling', es: 'Akvile Peach Sparkling', pt: 'Akvile Peach Sparkling', de: 'Akvile Peach Sparkling' }, size: '0.6L/1.5L' },
-            { id: 'berry-sparkling', name: { en: 'Akvile Red Berry Sparkling', fr: 'Akvile Red Berry Sparkling', it: 'Akvile Red Berry Sparkling', es: 'Akvile Red Berry Sparkling', pt: 'Akvile Red Berry Sparkling', de: 'Akvile Red Berry Sparkling' }, size: '0.6L/1.5L' },
-            { id: 'orange-sparkling', name: { en: 'Akvile Orange Sparkling', fr: 'Akvile Orange Sparkling', it: 'Akvile Orange Sparkling', es: 'Akvile Orange Sparkling', pt: 'Akvile Orange Sparkling', de: 'Akvile Orange Sparkling' }, size: '0.6L/1.5L' },
-            { id: 'voss-strawberry', name: { en: 'Voss Strawberry Ginger', fr: 'Voss Strawberry Ginger', it: 'Voss Strawberry Ginger', es: 'Voss Strawberry Ginger', pt: 'Voss Strawberry Ginger', de: 'Voss Strawberry Ginger' }, size: '0.33L' },
-            { id: 'voss-lime', name: { en: 'Voss Lime Mint', fr: 'Voss Lime Mint', it: 'Voss Lime Mint', es: 'Voss Lime Mint', pt: 'Voss Lime Mint', de: 'Voss Lime Mint' }, size: '0.33L' },
-            { id: 'voss-lemon', name: { en: 'Voss Lemon Cucumber', fr: 'Voss Lemon Cucumber', it: 'Voss Lemon Cucumber', es: 'Voss Lemon Cucumber', pt: 'Voss Lemon Cucumber', de: 'Voss Lemon Cucumber' }, size: '0.33L' }
+            { id: 'beauty-water', name: { en: 'Akvile Beauty Water', fr: 'Akvile Beauty Water', it: 'Akvile Beauty Water', es: 'Akvile Beauty Water', pt: 'Akvile Beauty Water', de: 'Akvile Beauty Water' }, size: '0.6L', image: 'Beauty Water Akvile 400.jpg' },
+            { id: 'digestive-water', name: { en: 'Akvile Digestive Water', fr: 'Akvile Digestive Water', it: 'Akvile Digestive Water', es: 'Akvile Digestive Water', pt: 'Akvile Digestive Water', de: 'Akvile Digestive Water' }, size: '0.6L', image: 'Digestif Water Akvile 400.jpg' },
+            { id: 'green-tea', name: { en: 'Akvile Pre+Post Green Tea', fr: 'Akvile Pre+Post Green Tea', it: 'Akvile Pre+Post Green Tea', es: 'Akvile Pre+Post Green Tea', pt: 'Akvile Pre+Post Green Tea', de: 'Akvile Pre+Post Green Tea' }, size: '0.6L', image: 'Pre Post Green Tea Akvile 400.jpg' },
+            { id: 'voss-plus', name: { en: 'Voss Plus', fr: 'Voss Plus', it: 'Voss Plus', es: 'Voss Plus', pt: 'Voss Plus', de: 'Voss Plus' }, size: '0.5L', image: 'Voss Plus 400.jpg' },
+            { id: 'lemon-sparkling', name: { en: 'Akvile Lemon Sparkling', fr: 'Akvile Lemon Sparkling', it: 'Akvile Lemon Sparkling', es: 'Akvile Lemon Sparkling', pt: 'Akvile Lemon Sparkling', de: 'Akvile Lemon Sparkling' }, size: '0.6L/1.5L', image: 'Akvile_lemon_400.jpg' },
+            { id: 'lime-sparkling', name: { en: 'Akvile Tahiti Lime Sparkling', fr: 'Akvile Tahiti Lime Sparkling', it: 'Akvile Tahiti Lime Sparkling', es: 'Akvile Tahiti Lime Sparkling', pt: 'Akvile Tahiti Lime Sparkling', de: 'Akvile Tahiti Lime Sparkling' }, size: '0.6L/1.5L', image: 'Akvile_lime_400.jpg' },
+            { id: 'peach-sparkling', name: { en: 'Akvile Peach Sparkling', fr: 'Akvile Peach Sparkling', it: 'Akvile Peach Sparkling', es: 'Akvile Peach Sparkling', pt: 'Akvile Peach Sparkling', de: 'Akvile Peach Sparkling' }, size: '0.6L/1.5L', image: 'Akvile_pomegranate_400.jpg' },
+            { id: 'berry-sparkling', name: { en: 'Akvile Red Berry Sparkling', fr: 'Akvile Red Berry Sparkling', it: 'Akvile Red Berry Sparkling', es: 'Akvile Red Berry Sparkling', pt: 'Akvile Red Berry Sparkling', de: 'Akvile Red Berry Sparkling' }, size: '0.6L/1.5L', image: 'Akvile_red_berry_400.jpg' },
+            { id: 'orange-sparkling', name: { en: 'Akvile Orange Sparkling', fr: 'Akvile Orange Sparkling', it: 'Akvile Orange Sparkling', es: 'Akvile Orange Sparkling', pt: 'Akvile Orange Sparkling', de: 'Akvile Orange Sparkling' }, size: '0.6L/1.5L', image: 'Akvile Oragne -400.jpg' },
+            { id: 'voss-strawberry', name: { en: 'Voss Strawberry Ginger', fr: 'Voss Strawberry Ginger', it: 'Voss Strawberry Ginger', es: 'Voss Strawberry Ginger', pt: 'Voss Strawberry Ginger', de: 'Voss Strawberry Ginger' }, size: '0.33L', image: 'Strawberry Ginger Voss 400.jpg' },
+            { id: 'voss-lime', name: { en: 'Voss Lime Mint', fr: 'Voss Lime Mint', it: 'Voss Lime Mint', es: 'Voss Lime Mint', pt: 'Voss Lime Mint', de: 'Voss Lime Mint' }, size: '0.33L', image: 'Mint Lime Voss 400.jpg' },
+            { id: 'voss-lemon', name: { en: 'Voss Lemon Cucumber', fr: 'Voss Lemon Cucumber', it: 'Voss Lemon Cucumber', es: 'Voss Lemon Cucumber', pt: 'Voss Lemon Cucumber', de: 'Voss Lemon Cucumber' }, size: '0.33L', image: 'Lemon Cucumber Voss 400.jpg' }
         ];
 
         const productDetails = {
@@ -237,7 +422,13 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.onclick = () => showProductInfo(product.id);
-                card.innerHTML = `<div><h3>${product.name[currentLanguage]}</h3><p>${product.size}</p></div>`;
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name[currentLanguage]}" onerror="this.style.display='none'">
+                    <div class="product-text">
+                        <h3>${product.name[currentLanguage]}</h3>
+                        <p>${product.size}</p>
+                    </div>
+                `;
                 grid.appendChild(card);
             });
         }
