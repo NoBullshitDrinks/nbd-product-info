@@ -5,701 +5,272 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoBullshitDrinks - Product Information</title>
     
-    <!-- Google Analytics GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5JQQWB6DX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-R5JQQWB6DX', {
-            'anonymize_ip': true,
-            'cookie_flags': 'SameSite=None;Secure'
-        });
-        
-        function trackProductView(productName, language) {
-            gtag('event', 'product_view', {
-                'product_name': productName,
-                'language': language,
-                'event_category': 'engagement'
-            });
-        }
-        
-        function trackLanguageSwitch(newLanguage) {
-            gtag('event', 'language_switch', {
-                'new_language': newLanguage,
-                'event_category': 'navigation'
-            });
-        }
+        gtag('config', 'G-R5JQQWB6DX');
     </script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-        }
-        
-        header {
-            background: white;
-            padding: 12px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            text-align: center;
-        }
-        
-        .logo {
-            max-height: 45px;
-            height: auto;
-        }
-        
-        .language-selector {
-            margin: 15px auto;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
-        }
-        
-        .language-selector h2 {
-            margin-bottom: 15px;
-            color: #2C5F7D;
-            font-size: 18px;
-        }
-        
-        .language-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .lang-btn {
-            padding: 12px 24px;
-            background: #2C5F7D;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: #7FB069;
-            transform: translateY(-2px);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-        
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
-        }
-        
-        .product-info-text {
-            flex: 1;
-        }
-        
-        .product-thumbnail {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-        
-        .product-card h3 {
-            color: #2C5F7D;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-        
-        .product-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #7FB069;
-            color: white;
-            border-radius: 20px;
-            font-size: 11px;
-            margin-bottom: 10px;
-        }
-        
-        .product-details {
-            display: none;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-        }
-        
-        .product-details.active {
-            display: block;
-        }
-        
-        .info-section {
-            margin-bottom: 15px;
-        }
-        
-        .info-section h4 {
-            color: #2C5F7D;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .info-section p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .contact-info {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-        
-        .contact-info p {
-            margin: 8px 0;
-            font-size: 13px;
-        }
-        
-        .contact-info a {
-            color: #2C5F7D;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-info a:hover {
-            color: #7FB069;
-            text-decoration: underline;
-        }
-        
-        .back-btn {
-            display: inline-block;
-            margin: 15px 0;
-            padding: 10px 20px;
-            background: #e0e0e0;
-            color: #333;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .back-btn:hover {
-            background: #d0d0d0;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        header { background: white; padding: 12px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; text-align: center; }
+        .logo { max-height: 45px; height: auto; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .language-selector { margin: 15px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; }
+        .language-selector h2 { margin-bottom: 15px; color: #2C5F7D; font-size: 18px; }
+        .language-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .lang-btn { padding: 12px 24px; background: #2C5F7D; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+        .lang-btn:hover { background: #1a3d52; }
+        .product-selector { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
+        .product-selector h2 { color: #2C5F7D; margin-bottom: 20px; font-size: 22px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .product-card { background: #f9f9f9; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
+        .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: #2C5F7D; }
+        .product-card h3 { color: #2C5F7D; font-size: 16px; margin-bottom: 5px; }
+        .product-card p { font-size: 13px; color: #666; }
+        .product-info { background: white; border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
+        .back-btn { background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; font-size: 14px; }
+        .back-btn:hover { background: #5a6268; }
+        .product-info h2 { color: #2C5F7D; margin-bottom: 10px; font-size: 24px; }
+        .product-info h3 { color: #2C5F7D; margin-top: 25px; margin-bottom: 10px; font-size: 18px; border-bottom: 2px solid #2C5F7D; padding-bottom: 5px; }
+        .info-section { margin: 15px 0; }
+        .info-label { font-weight: bold; color: #555; margin-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #2C5F7D; color: white; font-weight: 600; }
+        .hidden { display: none; }
+        footer { background: white; padding: 15px; margin-top: 40px; text-align: center; border-top: 3px solid #2C5F7D; }
+        .company-info { max-width: 600px; margin: 0 auto; text-align: center; }
+        .company-info h3 { color: #2C5F7D; margin-bottom: 10px; }
+        .company-info p { margin: 5px 0; color: #666; }
+        .company-info a { color: #2C5F7D; text-decoration: none; }
+        .company-info a:hover { text-decoration: underline; }
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .product-thumbnail {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .product-card h3 {
-                font-size: 14px;
-            }
+            .product-grid { grid-template-columns: 1fr; }
+            .language-buttons { flex-direction: column; }
+            .lang-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/logo.png" alt="NoBullshitDrinks Logo" class="logo">
+        <img src="logo.png" alt="NoBullshitDrinks" class="logo">
     </header>
 
     <div class="container">
-        <div id="languageSelection" class="language-selector">
+        <div id="languageSelector" class="language-selector">
             <h2>Select Your Language / Choisissez votre langue</h2>
             <div class="language-buttons">
                 <button class="lang-btn" onclick="selectLanguage('en')">English</button>
                 <button class="lang-btn" onclick="selectLanguage('fr')">Français</button>
-                <button class="lang-btn" onclick="selectLanguage('es')">Español</button>
                 <button class="lang-btn" onclick="selectLanguage('it')">Italiano</button>
-                <button class="lang-btn" onclick="selectLanguage('de')">Deutsch</button>
+                <button class="lang-btn" onclick="selectLanguage('es')">Español</button>
                 <button class="lang-btn" onclick="selectLanguage('pt')">Português</button>
+                <button class="lang-btn" onclick="selectLanguage('de')">Deutsch</button>
             </div>
         </div>
 
-        <div id="productsView" class="hidden">
-            <button class="back-btn" onclick="backToLanguages()">← Back</button>
-            <div id="productsGrid" class="products-grid"></div>
+        <div id="productSelector" class="product-selector hidden">
+            <button class="back-btn" onclick="backToLanguages()">← Back to Languages</button>
+            <h2 id="productSelectorTitle">Select a Product</h2>
+            <div id="productGrid" class="product-grid"></div>
+        </div>
+
+        <div id="productInfo" class="product-info hidden">
+            <button class="back-btn" onclick="backToProducts()">← Back to Products</button>
+            <div id="productContent"></div>
         </div>
     </div>
 
+    <footer>
+        <div class="company-info">
+            <h3>NoBullshitDrinks</h3>
+            <p><strong>Distributed by:</strong> NoBullshitDrinks</p>
+            <p>Kesklinna linnaosa, Pärnu mnt 139e/2-8<br>Harju maakond, Tallinn, 11317</p>
+            <p><strong>Email:</strong> <a href="mailto:info@nobullshitdrinks.com">info@nobullshitdrinks.com</a></p>
+            <p><strong>Website:</strong> <a href="http://www.nobullshitdrinks.com" target="_blank">www.nobullshitdrinks.com</a></p>
+        </div>
+    </footer>
+
     <script>
-        const productImages = {
-            'red-berry': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_red_berry_400.jpg',
-            'tahiti-lime': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_lime_400.jpg',
-            'peach': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_peach_400.jpg',
-            'lemon': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile_lemon_400.jpg',
-            'orange': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Akvile Oragne -400.jpg',
-            'voss-plus': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Voss Plus 400.jpg',
-            'voss-strawberry': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Strawberry Ginger Voss 400.jpg',
-            'voss-lime-mint': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Lime Mint Voss 400.jpg',
-            'voss-lemon-cucumber': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Lemon Cucumber Voss 400.jpg',
-            'green-tea': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Pre Post Green Tea Akvile 400.jpg',
-            'digestif': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Digestif Water Akvile 400.jpg',
-            'beauty': 'https://raw.githubusercontent.com/nobullshitdrinks/nbd-product-info/main/Beauty Water Akvile 400.jpg'
+        let currentLanguage = '';
+        
+        const translations = {
+            en: { title: 'Select a Product', backToLang: '← Back to Languages', backToProd: '← Back to Products', nutritionalInfo: 'Nutritional Information', per100ml: 'Per 100ml', perBottle: 'Per Bottle', ingredients: 'Ingredients', allergens: 'Allergens', storage: 'Storage', bestBefore: 'Best Before', netContent: 'Net Content', warnings: 'Warnings', distributed: 'Distributed by' },
+            fr: { title: 'Sélectionnez un produit', backToLang: '← Retour aux langues', backToProd: '← Retour aux produits', nutritionalInfo: 'Informations nutritionnelles', per100ml: 'Pour 100ml', perBottle: 'Par bouteille', ingredients: 'Ingrédients', allergens: 'Allergènes', storage: 'Conservation', bestBefore: 'À consommer avant', netContent: 'Contenu net', warnings: 'Avertissements', distributed: 'Distribué par' },
+            it: { title: 'Seleziona un prodotto', backToLang: '← Torna alle lingue', backToProd: '← Torna ai prodotti', nutritionalInfo: 'Informazioni nutrizionali', per100ml: 'Per 100ml', perBottle: 'Per bottiglia', ingredients: 'Ingredienti', allergens: 'Allergeni', storage: 'Conservazione', bestBefore: 'Da consumarsi entro', netContent: 'Contenuto netto', warnings: 'Avvertenze', distributed: 'Distribuito da' },
+            es: { title: 'Seleccione un producto', backToLang: '← Volver a idiomas', backToProd: '← Volver a productos', nutritionalInfo: 'Información nutricional', per100ml: 'Por 100ml', perBottle: 'Por botella', ingredients: 'Ingredientes', allergens: 'Alérgenos', storage: 'Conservación', bestBefore: 'Consumir antes de', netContent: 'Contenido neto', warnings: 'Advertencias', distributed: 'Distribuido por' },
+            pt: { title: 'Selecione um produto', backToLang: '← Voltar aos idiomas', backToProd: '← Voltar aos produtos', nutritionalInfo: 'Informação nutricional', per100ml: 'Por 100ml', perBottle: 'Por garrafa', ingredients: 'Ingredientes', allergens: 'Alergénios', storage: 'Conservação', bestBefore: 'Consumir antes de', netContent: 'Conteúdo líquido', warnings: 'Avisos', distributed: 'Distribuído por' },
+            de: { title: 'Wählen Sie ein Produkt', backToLang: '← Zurück zu Sprachen', backToProd: '← Zurück zu Produkten', nutritionalInfo: 'Nährwertangaben', per100ml: 'Pro 100ml', perBottle: 'Pro Flasche', ingredients: 'Zutaten', allergens: 'Allergene', storage: 'Lagerung', bestBefore: 'Mindesthaltbar bis', netContent: 'Nettoinhalt', warnings: 'Warnhinweise', distributed: 'Vertrieben durch' }
         };
 
-        const products = {
-            en: [
-                {
-                    name: "Akvile Red Berry Sparkling 1.5L",
-                    category: "Flavoured Water",
-                    image: productImages['red-berry'],
-                    ingredients: "Water, CO2, natural red berry flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Tahiti Lime Sparkling 1.5L",
-                    category: "Flavoured Water",
-                    image: productImages['tahiti-lime'],
-                    ingredients: "Water, CO2, natural lime flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Peach Sparkling 1.5L",
-                    category: "Flavoured Water",
-                    image: productImages['peach'],
-                    ingredients: "Water, CO2, natural peach flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Lemon Sparkling 1.5L",
-                    category: "Flavoured Water",
-                    image: productImages['lemon'],
-                    ingredients: "Water, CO2, natural lemon flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Orange Sparkling 0.6L",
-                    category: "Flavoured Water",
-                    image: productImages['orange'],
-                    ingredients: "Water, CO2, natural orange flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Functional Drink",
-                    image: productImages['voss-plus'],
-                    ingredients: "Artesian water from Norway, niacin (vitamin B3), pantothenic acid (vitamin B5), vitamin B6, biotin (vitamin B7), vitamin B12",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g, Vitamins B3/B5/B6/B7/B12",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Strawberry Ginger 0.33L",
-                    category: "Flavoured Water",
-                    image: productImages['voss-strawberry'],
-                    ingredients: "Artesian water from Norway, natural strawberry and ginger flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "Aluminum can - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Lime Mint 0.33L",
-                    category: "Flavoured Water",
-                    image: productImages['voss-lime-mint'],
-                    ingredients: "Artesian water from Norway, natural lime and mint flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "Aluminum can - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Lemon Cucumber 0.33L",
-                    category: "Flavoured Water",
-                    image: productImages['voss-lemon-cucumber'],
-                    ingredients: "Artesian water from Norway, natural lemon and cucumber flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "Aluminum can - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Pre + Post Green Tea 0.6L",
-                    category: "Functional Drink",
-                    image: productImages['green-tea'],
-                    ingredients: "Water, green tea extract (20mg polyphenols), natural flavouring",
-                    nutrition: "Per 100ml: Energy 0 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g, Green tea polyphenols 3.3mg",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Digestif Water 0.6L",
-                    category: "Functional Drink",
-                    image: productImages['digestif'],
-                    ingredients: "Water, apple cider vinegar (1%), ginger juice (0.5%), natural flavouring",
-                    nutrition: "Per 100ml: Energy 2 kJ/0 kcal, Fat 0g, Carbohydrates 0g, Protein 0g, Salt 0g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Functional Drink",
-                    image: productImages['beauty'],
-                    ingredients: "Water, marine collagen peptides (0.83%), peach juice from concentrate (1%), natural peach flavouring",
-                    nutrition: "Per 100ml: Energy 7 kJ/2 kcal, Fat 0g, Carbohydrates 0.2g (sugars 0.2g), Protein 0.4g, Salt 0.01g, Collagen 0.83g",
-                    recycling: "PET bottle - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ],
-            fr: [
-                {
-                    name: "Akvile Red Berry Pétillante 1.5L",
-                    category: "Eau Aromatisée",
-                    image: productImages['red-berry'],
-                    ingredients: "Eau, CO2, arôme naturel de fruits rouges",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Tahiti Lime Pétillante 1.5L",
-                    category: "Eau Aromatisée",
-                    image: productImages['tahiti-lime'],
-                    ingredients: "Eau, CO2, arôme naturel de citron vert",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Pêche Pétillante 1.5L",
-                    category: "Eau Aromatisée",
-                    image: productImages['peach'],
-                    ingredients: "Eau, CO2, arôme naturel de pêche",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Citron Pétillante 1.5L",
-                    category: "Eau Aromatisée",
-                    image: productImages['lemon'],
-                    ingredients: "Eau, CO2, arôme naturel de citron",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Orange Pétillante 0.6L",
-                    category: "Eau Aromatisée",
-                    image: productImages['orange'],
-                    ingredients: "Eau, CO2, arôme naturel d'orange",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Boisson Fonctionnelle",
-                    image: productImages['voss-plus'],
-                    ingredients: "Eau artésienne de Norvège, niacine (vitamine B3), acide pantothénique (vitamine B5), vitamine B6, biotine (vitamine B7), vitamine B12",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g, Vitamines B3/B5/B6/B7/B12",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Fraise Gingembre 0.33L",
-                    category: "Eau Aromatisée",
-                    image: productImages['voss-strawberry'],
-                    ingredients: "Eau artésienne de Norvège, arôme naturel de fraise et gingembre",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Canette aluminium - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Citron Vert Menthe 0.33L",
-                    category: "Eau Aromatisée",
-                    image: productImages['voss-lime-mint'],
-                    ingredients: "Eau artésienne de Norvège, arôme naturel de citron vert et menthe",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Canette aluminium - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Citron Concombre 0.33L",
-                    category: "Eau Aromatisée",
-                    image: productImages['voss-lemon-cucumber'],
-                    ingredients: "Eau artésienne de Norvège, arôme naturel de citron et concombre",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Canette aluminium - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Pre + Post Thé Vert 0.6L",
-                    category: "Boisson Fonctionnelle",
-                    image: productImages['green-tea'],
-                    ingredients: "Eau, extrait de thé vert (20mg polyphénols), arôme naturel",
-                    nutrition: "Pour 100ml: Énergie 0 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g, Polyphénols de thé vert 3,3mg",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Digestif Water 0.6L",
-                    category: "Boisson Fonctionnelle",
-                    image: productImages['digestif'],
-                    ingredients: "Eau, vinaigre de cidre (1%), jus de gingembre (0,5%), arôme naturel",
-                    nutrition: "Pour 100ml: Énergie 2 kJ/0 kcal, Lipides 0g, Glucides 0g, Protéines 0g, Sel 0g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Boisson Fonctionnelle",
-                    image: productImages['beauty'],
-                    ingredients: "Eau, peptides de collagène marin (0,83%), jus de pêche à base de concentré (1%), arôme naturel de pêche",
-                    nutrition: "Pour 100ml: Énergie 7 kJ/2 kcal, Lipides 0g, Glucides 0,2g (dont sucres 0,2g), Protéines 0,4g, Sel 0,01g, Collagène 0,83g",
-                    recycling: "Bouteille PET - Recyclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ],
-            es: [
-                {
-                    name: "Akvile Red Berry Gasificada 1.5L",
-                    category: "Agua Aromatizada",
-                    image: productImages['red-berry'],
-                    ingredients: "Agua, CO2, aroma natural de frutos rojos",
-                    nutrition: "Por 100ml: Energía 0 kJ/0 kcal, Grasas 0g, Carbohidratos 0g, Proteínas 0g, Sal 0g",
-                    recycling: "Botella PET - Reciclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Bebida Funcional",
-                    image: productImages['voss-plus'],
-                    ingredients: "Agua artesiana de Noruega, niacina (vitamina B3), ácido pantoténico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
-                    nutrition: "Por 100ml: Energía 0 kJ/0 kcal, Grasas 0g, Carbohidratos 0g, Proteínas 0g, Sal 0g, Vitaminas B3/B5/B6/B7/B12",
-                    recycling: "Botella PET - Reciclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Bebida Funcional",
-                    image: productImages['beauty'],
-                    ingredients: "Agua, péptidos de colágeno marino (0,83%), zumo de melocotón a partir de concentrado (1%), aroma natural de melocotón",
-                    nutrition: "Por 100ml: Energía 7 kJ/2 kcal, Grasas 0g, Carbohidratos 0,2g (azúcares 0,2g), Proteínas 0,4g, Sal 0,01g, Colágeno 0,83g",
-                    recycling: "Botella PET - Reciclable",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ],
-            it: [
-                {
-                    name: "Akvile Red Berry Frizzante 1.5L",
-                    category: "Acqua Aromatizzata",
-                    image: productImages['red-berry'],
-                    ingredients: "Acqua, CO2, aroma naturale di frutti rossi",
-                    nutrition: "Per 100ml: Energia 0 kJ/0 kcal, Grassi 0g, Carboidrati 0g, Proteine 0g, Sale 0g",
-                    recycling: "Bottiglia PET - Riciclabile",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Bevanda Funzionale",
-                    image: productImages['voss-plus'],
-                    ingredients: "Acqua artesiana dalla Norvegia, niacina (vitamina B3), acido pantotenico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
-                    nutrition: "Per 100ml: Energia 0 kJ/0 kcal, Grassi 0g, Carboidrati 0g, Proteine 0g, Sale 0g, Vitamine B3/B5/B6/B7/B12",
-                    recycling: "Bottiglia PET - Riciclabile",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Bevanda Funzionale",
-                    image: productImages['beauty'],
-                    ingredients: "Acqua, peptidi di collagene marino (0,83%), succo di pesca da concentrato (1%), aroma naturale di pesca",
-                    nutrition: "Per 100ml: Energia 7 kJ/2 kcal, Grassi 0g, Carboidrati 0,2g (zuccheri 0,2g), Proteine 0,4g, Sale 0,01g, Collagene 0,83g",
-                    recycling: "Bottiglia PET - Riciclabile",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ],
-            de: [
-                {
-                    name: "Akvile Red Berry Sprudel 1.5L",
-                    category: "Aromatisiertes Wasser",
-                    image: productImages['red-berry'],
-                    ingredients: "Wasser, CO2, natürliches Beerenaroma",
-                    nutrition: "Pro 100ml: Energie 0 kJ/0 kcal, Fett 0g, Kohlenhydrate 0g, Eiweiß 0g, Salz 0g",
-                    recycling: "PET-Flasche - Recycelbar",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Funktionsgetränk",
-                    image: productImages['voss-plus'],
-                    ingredients: "Artesisches Wasser aus Norwegen, Niacin (Vitamin B3), Pantothensäure (Vitamin B5), Vitamin B6, Biotin (Vitamin B7), Vitamin B12",
-                    nutrition: "Pro 100ml: Energie 0 kJ/0 kcal, Fett 0g, Kohlenhydrate 0g, Eiweiß 0g, Salz 0g, Vitamine B3/B5/B6/B7/B12",
-                    recycling: "PET-Flasche - Recycelbar",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Funktionsgetränk",
-                    image: productImages['beauty'],
-                    ingredients: "Wasser, Meereskollagen-Peptide (0,83%), Pfirsichsaft aus Konzentrat (1%), natürliches Pfirsicharoma",
-                    nutrition: "Pro 100ml: Energie 7 kJ/2 kcal, Fett 0g, Kohlenhydrate 0,2g (Zucker 0,2g), Eiweiß 0,4g, Salz 0,01g, Kollagen 0,83g",
-                    recycling: "PET-Flasche - Recycelbar",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ],
-            pt: [
-                {
-                    name: "Akvile Red Berry Gasosa 1.5L",
-                    category: "Água Aromatizada",
-                    image: productImages['red-berry'],
-                    ingredients: "Água, CO2, aroma natural de frutos vermelhos",
-                    nutrition: "Por 100ml: Energia 0 kJ/0 kcal, Gorduras 0g, Carboidratos 0g, Proteínas 0g, Sal 0g",
-                    recycling: "Garrafa PET - Reciclável",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Voss Plus 0.5L",
-                    category: "Bebida Funcional",
-                    image: productImages['voss-plus'],
-                    ingredients: "Água artesiana da Noruega, niacina (vitamina B3), ácido pantoténico (vitamina B5), vitamina B6, biotina (vitamina B7), vitamina B12",
-                    nutrition: "Por 100ml: Energia 0 kJ/0 kcal, Gorduras 0g, Carboidratos 0g, Proteínas 0g, Sal 0g, Vitaminas B3/B5/B6/B7/B12",
-                    recycling: "Garrafa PET - Reciclável",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                },
-                {
-                    name: "Akvile Beauty Water 0.6L",
-                    category: "Bebida Funcional",
-                    image: productImages['beauty'],
-                    ingredients: "Água, péptidos de colagénio marinho (0,83%), sumo de pêssego a partir de concentrado (1%), aroma natural de pêssego",
-                    nutrition: "Por 100ml: Energia 7 kJ/2 kcal, Gorduras 0g, Carboidratos 0,2g (açúcares 0,2g), Proteínas 0,4g, Sal 0,01g, Colagénio 0,83g",
-                    recycling: "Garrafa PET - Reciclável",
-                    contact: {email: "info@nobullshitdrinks.com", web: "www.nobullshitdrinks.com"}
-                }
-            ]
-        };
+        // Définition complète des 12 produits pour TOUTES les langues
+        const allProducts = [
+            { id: 'beauty-water', name: { en: 'Akvile Beauty Water', fr: 'Akvile Beauty Water', it: 'Akvile Beauty Water', es: 'Akvile Beauty Water', pt: 'Akvile Beauty Water', de: 'Akvile Beauty Water' }, size: '0.6L' },
+            { id: 'digestive-water', name: { en: 'Akvile Digestive Water', fr: 'Akvile Digestive Water', it: 'Akvile Digestive Water', es: 'Akvile Digestive Water', pt: 'Akvile Digestive Water', de: 'Akvile Digestive Water' }, size: '0.6L' },
+            { id: 'green-tea', name: { en: 'Akvile Pre+Post Green Tea', fr: 'Akvile Pre+Post Green Tea', it: 'Akvile Pre+Post Green Tea', es: 'Akvile Pre+Post Green Tea', pt: 'Akvile Pre+Post Green Tea', de: 'Akvile Pre+Post Green Tea' }, size: '0.6L' },
+            { id: 'voss-plus', name: { en: 'Voss Plus', fr: 'Voss Plus', it: 'Voss Plus', es: 'Voss Plus', pt: 'Voss Plus', de: 'Voss Plus' }, size: '0.5L' },
+            { id: 'lemon-sparkling', name: { en: 'Akvile Lemon Sparkling', fr: 'Akvile Lemon Sparkling', it: 'Akvile Lemon Sparkling', es: 'Akvile Lemon Sparkling', pt: 'Akvile Lemon Sparkling', de: 'Akvile Lemon Sparkling' }, size: '0.6L/1.5L' },
+            { id: 'lime-sparkling', name: { en: 'Akvile Tahiti Lime Sparkling', fr: 'Akvile Tahiti Lime Sparkling', it: 'Akvile Tahiti Lime Sparkling', es: 'Akvile Tahiti Lime Sparkling', pt: 'Akvile Tahiti Lime Sparkling', de: 'Akvile Tahiti Lime Sparkling' }, size: '0.6L/1.5L' },
+            { id: 'peach-sparkling', name: { en: 'Akvile Peach Sparkling', fr: 'Akvile Peach Sparkling', it: 'Akvile Peach Sparkling', es: 'Akvile Peach Sparkling', pt: 'Akvile Peach Sparkling', de: 'Akvile Peach Sparkling' }, size: '0.6L/1.5L' },
+            { id: 'berry-sparkling', name: { en: 'Akvile Red Berry Sparkling', fr: 'Akvile Red Berry Sparkling', it: 'Akvile Red Berry Sparkling', es: 'Akvile Red Berry Sparkling', pt: 'Akvile Red Berry Sparkling', de: 'Akvile Red Berry Sparkling' }, size: '0.6L/1.5L' },
+            { id: 'orange-sparkling', name: { en: 'Akvile Orange Sparkling', fr: 'Akvile Orange Sparkling', it: 'Akvile Orange Sparkling', es: 'Akvile Orange Sparkling', pt: 'Akvile Orange Sparkling', de: 'Akvile Orange Sparkling' }, size: '0.6L/1.5L' },
+            { id: 'voss-strawberry', name: { en: 'Voss Strawberry Ginger', fr: 'Voss Strawberry Ginger', it: 'Voss Strawberry Ginger', es: 'Voss Strawberry Ginger', pt: 'Voss Strawberry Ginger', de: 'Voss Strawberry Ginger' }, size: '0.33L' },
+            { id: 'voss-lime', name: { en: 'Voss Lime Mint', fr: 'Voss Lime Mint', it: 'Voss Lime Mint', es: 'Voss Lime Mint', pt: 'Voss Lime Mint', de: 'Voss Lime Mint' }, size: '0.33L' },
+            { id: 'voss-lemon', name: { en: 'Voss Lemon Cucumber', fr: 'Voss Lemon Cucumber', it: 'Voss Lemon Cucumber', es: 'Voss Lemon Cucumber', pt: 'Voss Lemon Cucumber', de: 'Voss Lemon Cucumber' }, size: '0.33L' }
+        ];
 
-        let currentLanguage = 'en';
+        const productDetails = {
+            'beauty-water': {
+                en: { desc: 'Functional drink with collagen', ingr: 'Water, hydrolyzed collagen (bovine) (0.8%), natural flavoring, acidity regulator (citric acid), preservative (potassium sorbate), sweeteners (sucralose, acesulfame K), vitamins (biotin, niacin).', nutr: { per100: '4 kcal, 0g fat, 0.5g carbs, 0.8g protein', perBottle: '24 kcal, 0g fat, 3g carbs, 4.8g protein' }, warn: 'Not suitable for children, pregnant or breastfeeding women.' },
+                fr: { desc: 'Boisson fonctionnelle avec collagène', ingr: 'Eau, collagène hydrolysé (bovin) (0,8%), arôme naturel, correcteur d\'acidité (acide citrique), conservateur (sorbate de potassium), édulcorants (sucralose, acésulfame K), vitamines (biotine, niacine).', nutr: { per100: '4 kcal, 0g lipides, 0,5g glucides, 0,8g protéines', perBottle: '24 kcal, 0g lipides, 3g glucides, 4,8g protéines' }, warn: 'Ne convient pas aux enfants, femmes enceintes ou allaitantes.' },
+                it: { desc: 'Bevanda funzionale con collagene', ingr: 'Acqua, collagene idrolizzato (bovino) (0,8%), aroma naturale, correttore di acidità (acido citrico), conservante (sorbato di potassio), edulcoranti (sucralosio, acesulfame K), vitamine (biotina, niacina).', nutr: { per100: '4 kcal, 0g grassi, 0,5g carboidrati, 0,8g proteine', perBottle: '24 kcal, 0g grassi, 3g carboidrati, 4,8g proteine' }, warn: 'Non adatto a bambini, donne in gravidanza o allattamento.' },
+                es: { desc: 'Bebida funcional con colágeno', ingr: 'Agua, colágeno hidrolizado (bovino) (0,8%), aroma natural, corrector de acidez (ácido cítrico), conservante (sorbato de potasio), edulcorantes (sucralosa, acesulfamo K), vitaminas (biotina, niacina).', nutr: { per100: '4 kcal, 0g grasas, 0,5g carbohidratos, 0,8g proteínas', perBottle: '24 kcal, 0g grasas, 3g carbohidratos, 4,8g proteínas' }, warn: 'No apto para niños, mujeres embarazadas o lactantes.' },
+                pt: { desc: 'Bebida funcional com colagénio', ingr: 'Água, colagénio hidrolisado (bovino) (0,8%), aroma natural, regulador de acidez (ácido cítrico), conservante (sorbato de potássio), edulcorantes (sucralose, acessulfame K), vitaminas (biotina, niacina).', nutr: { per100: '4 kcal, 0g gorduras, 0,5g hidratos de carbono, 0,8g proteínas', perBottle: '24 kcal, 0g gorduras, 3g hidratos de carbono, 4,8g proteínas' }, warn: 'Não adequado para crianças, grávidas ou lactantes.' },
+                de: { desc: 'Funktionsgetränk mit Kollagen', ingr: 'Wasser, hydrolysiertes Kollagen (Rind) (0,8%), natürliches Aroma, Säureregulator (Zitronensäure), Konservierungsmittel (Kaliumsorbat), Süßstoffe (Sucralose, Acesulfam K), Vitamine (Biotin, Niacin).', nutr: { per100: '4 kcal, 0g Fett, 0,5g Kohlenhydrate, 0,8g Eiweiß', perBottle: '24 kcal, 0g Fett, 3g Kohlenhydrate, 4,8g Eiweiß' }, warn: 'Nicht geeignet für Kinder, Schwangere oder Stillende.' }
+            },
+            'digestive-water': {
+                en: { desc: 'Functional drink for digestion', ingr: 'Water, apple cider vinegar (2%), natural flavoring, acidity regulator (citric acid), preservative (potassium sorbate), sweeteners (sucralose, acesulfame K).', nutr: { per100: '1 kcal, 0g fat, 0.1g carbs', perBottle: '6 kcal, 0g fat, 0.6g carbs' }, warn: 'Not suitable for children under 3 years.' },
+                fr: { desc: 'Boisson fonctionnelle pour la digestion', ingr: 'Eau, vinaigre de cidre (2%), arôme naturel, correcteur d\'acidité (acide citrique), conservateur (sorbate de potassium), édulcorants (sucralose, acésulfame K).', nutr: { per100: '1 kcal, 0g lipides, 0,1g glucides', perBottle: '6 kcal, 0g lipides, 0,6g glucides' }, warn: 'Ne convient pas aux enfants de moins de 3 ans.' },
+                it: { desc: 'Bevanda funzionale per la digestione', ingr: 'Acqua, aceto di mele (2%), aroma naturale, correttore di acidità (acido citrico), conservante (sorbato di potassio), edulcoranti (sucralosio, acesulfame K).', nutr: { per100: '1 kcal, 0g grassi, 0,1g carboidrati', perBottle: '6 kcal, 0g grassi, 0,6g carboidrati' }, warn: 'Non adatto a bambini sotto i 3 anni.' },
+                es: { desc: 'Bebida funcional para la digestión', ingr: 'Agua, vinagre de manzana (2%), aroma natural, corrector de acidez (ácido cítrico), conservante (sorbato de potasio), edulcorantes (sucralosa, acesulfamo K).', nutr: { per100: '1 kcal, 0g grasas, 0,1g carbohidratos', perBottle: '6 kcal, 0g grasas, 0,6g carbohidratos' }, warn: 'No apto para niños menores de 3 años.' },
+                pt: { desc: 'Bebida funcional para digestão', ingr: 'Água, vinagre de maçã (2%), aroma natural, regulador de acidez (ácido cítrico), conservante (sorbato de potássio), edulcorantes (sucralose, acessulfame K).', nutr: { per100: '1 kcal, 0g gorduras, 0,1g hidratos de carbono', perBottle: '6 kcal, 0g gorduras, 0,6g hidratos de carbono' }, warn: 'Não adequado para crianças com menos de 3 anos.' },
+                de: { desc: 'Funktionsgetränk für die Verdauung', ingr: 'Wasser, Apfelessig (2%), natürliches Aroma, Säureregulator (Zitronensäure), Konservierungsmittel (Kaliumsorbat), Süßstoffe (Sucralose, Acesulfam K).', nutr: { per100: '1 kcal, 0g Fett, 0,1g Kohlenhydrate', perBottle: '6 kcal, 0g Fett, 0,6g Kohlenhydrate' }, warn: 'Nicht geeignet für Kinder unter 3 Jahren.' }
+            },
+            'green-tea': {
+                en: { desc: 'Green tea functional drink', ingr: 'Water, green tea extract (0.1%), natural flavoring, acidity regulator (citric acid), preservative (potassium sorbate), sweeteners (sucralose, acesulfame K), vitamins (B6, B12).', nutr: { per100: '1 kcal, 0g fat, 0.1g carbs', perBottle: '6 kcal, 0g fat, 0.6g carbs' }, warn: 'Contains caffeine. Not suitable for children or pregnant women.' },
+                fr: { desc: 'Boisson fonctionnelle au thé vert', ingr: 'Eau, extrait de thé vert (0,1%), arôme naturel, correcteur d\'acidité (acide citrique), conservateur (sorbate de potassium), édulcorants (sucralose, acésulfame K), vitamines (B6, B12).', nutr: { per100: '1 kcal, 0g lipides, 0,1g glucides', perBottle: '6 kcal, 0g lipides, 0,6g glucides' }, warn: 'Contient de la caféine. Ne convient pas aux enfants ni aux femmes enceintes.' },
+                it: { desc: 'Bevanda funzionale al tè verde', ingr: 'Acqua, estratto di tè verde (0,1%), aroma naturale, correttore di acidità (acido citrico), conservante (sorbato di potassio), edulcoranti (sucralosio, acesulfame K), vitamine (B6, B12).', nutr: { per100: '1 kcal, 0g grassi, 0,1g carboidrati', perBottle: '6 kcal, 0g grassi, 0,6g carboidrati' }, warn: 'Contiene caffeina. Non adatto a bambini o donne in gravidanza.' },
+                es: { desc: 'Bebida funcional de té verde', ingr: 'Agua, extracto de té verde (0,1%), aroma natural, corrector de acidez (ácido cítrico), conservante (sorbato de potasio), edulcorantes (sucralosa, acesulfamo K), vitaminas (B6, B12).', nutr: { per100: '1 kcal, 0g grasas, 0,1g carbohidratos', perBottle: '6 kcal, 0g grasas, 0,6g carbohidratos' }, warn: 'Contiene cafeína. No apto para niños o mujeres embarazadas.' },
+                pt: { desc: 'Bebida funcional de chá verde', ingr: 'Água, extrato de chá verde (0,1%), aroma natural, regulador de acidez (ácido cítrico), conservante (sorbato de potássio), edulcorantes (sucralose, acessulfame K), vitaminas (B6, B12).', nutr: { per100: '1 kcal, 0g gorduras, 0,1g hidratos de carbono', perBottle: '6 kcal, 0g gorduras, 0,6g hidratos de carbono' }, warn: 'Contém cafeína. Não adequado para crianças ou grávidas.' },
+                de: { desc: 'Grüntee-Funktionsgetränk', ingr: 'Wasser, Grüntee-Extrakt (0,1%), natürliches Aroma, Säureregulator (Zitronensäure), Konservierungsmittel (Kaliumsorbat), Süßstoffe (Sucralose, Acesulfam K), Vitamine (B6, B12).', nutr: { per100: '1 kcal, 0g Fett, 0,1g Kohlenhydrate', perBottle: '6 kcal, 0g Fett, 0,6g Kohlenhydrate' }, warn: 'Enthält Koffein. Nicht geeignet für Kinder oder Schwangere.' }
+            },
+            'voss-plus': {
+                en: { desc: 'Premium functional water', ingr: 'Artesian water, electrolytes (calcium, magnesium, potassium).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau fonctionnelle premium', ingr: 'Eau artésienne, électrolytes (calcium, magnésium, potassium).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua funzionale premium', ingr: 'Acqua artesiana, elettroliti (calcio, magnesio, potassio).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua funcional premium', ingr: 'Agua artesiana, electrolitos (calcio, magnesio, potasio).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água funcional premium', ingr: 'Água artesiana, eletrólitos (cálcio, magnésio, potássio).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Premium-Funktionswasser', ingr: 'Artesisches Wasser, Elektrolyte (Kalzium, Magnesium, Kalium).', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'lemon-sparkling': {
+                en: { desc: 'Sparkling flavoured water', ingr: 'Carbonated water, natural lemon flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau gazéifiée, arôme naturel de citron.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua gassata, aroma naturale di limone.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua carbonatada, aroma natural de limón.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água gaseificada, aroma natural de limão.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Kohlensäurehaltiges Wasser, natürliches Zitronenaroma.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'lime-sparkling': {
+                en: { desc: 'Sparkling flavoured water', ingr: 'Carbonated water, natural lime flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau gazéifiée, arôme naturel de citron vert.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua gassata, aroma naturale di lime.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua carbonatada, aroma natural de lima.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água gaseificada, aroma natural de lima.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Kohlensäurehaltiges Wasser, natürliches Limettenaroma.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'peach-sparkling': {
+                en: { desc: 'Sparkling flavoured water', ingr: 'Carbonated water, natural peach flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau gazéifiée, arôme naturel de pêche.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua gassata, aroma naturale di pesca.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua carbonatada, aroma natural de melocotón.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água gaseificada, aroma natural de pêssego.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Kohlensäurehaltiges Wasser, natürliches Pfirsicharoma.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'berry-sparkling': {
+                en: { desc: 'Sparkling flavoured water', ingr: 'Carbonated water, natural red berry flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau gazéifiée, arôme naturel de fruits rouges.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua gassata, aroma naturale di frutti rossi.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua carbonatada, aroma natural de frutos rojos.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água gaseificada, aroma natural de frutos vermelhos.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Kohlensäurehaltiges Wasser, natürliches rote Beeren Aroma.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'orange-sparkling': {
+                en: { desc: 'Sparkling flavoured water', ingr: 'Carbonated water, natural orange flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau gazéifiée, arôme naturel d\'orange.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua gassata, aroma naturale di arancia.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua carbonatada, aroma natural de naranja.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água gaseificada, aroma natural de laranja.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Kohlensäurehaltiges Wasser, natürliches Orangenaroma.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'voss-strawberry': {
+                en: { desc: 'Flavoured sparkling water', ingr: 'Carbonated artesian water, natural strawberry and ginger flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau artésienne gazéifiée, arômes naturels de fraise et gingembre.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua artesiana gassata, aromi naturali di fragola e zenzero.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua artesiana carbonatada, aromas naturales de fresa y jengibre.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água artesiana gaseificada, aromas naturais de morango e gengibre.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Artesisches Wasser mit Kohlensäure, natürliche Erdbeer- und Ingweraromen.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'voss-lime': {
+                en: { desc: 'Flavoured sparkling water', ingr: 'Carbonated artesian water, natural lime and mint flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau artésienne gazéifiée, arômes naturels de citron vert et menthe.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua artesiana gassata, aromi naturali di lime e menta.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua artesiana carbonatada, aromas naturales de lima y menta.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água artesiana gaseificada, aromas naturais de lima e hortelã.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Artesisches Wasser mit Kohlensäure, natürliche Limetten- und Minzaromen.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            },
+            'voss-lemon': {
+                en: { desc: 'Flavoured sparkling water', ingr: 'Carbonated artesian water, natural lemon and cucumber flavoring.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'None' },
+                fr: { desc: 'Eau aromatisée pétillante', ingr: 'Eau artésienne gazéifiée, arômes naturels de citron et concombre.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Aucun' },
+                it: { desc: 'Acqua frizzante aromatizzata', ingr: 'Acqua artesiana gassata, aromi naturali di limone e cetriolo.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nessuno' },
+                es: { desc: 'Agua con gas aromatizada', ingr: 'Agua artesiana carbonatada, aromas naturales de limón y pepino.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Ninguno' },
+                pt: { desc: 'Água gaseificada aromatizada', ingr: 'Água artesiana gaseificada, aromas naturais de limão e pepino.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Nenhum' },
+                de: { desc: 'Aromatisiertes Sprudelwasser', ingr: 'Artesisches Wasser mit Kohlensäure, natürliche Zitronen- und Gurkenaromen.', nutr: { per100: '0 kcal', perBottle: '0 kcal' }, warn: 'Keine' }
+            }
+        };
 
         function selectLanguage(lang) {
             currentLanguage = lang;
-            trackLanguageSwitch(lang);
-            document.getElementById('languageSelection').classList.add('hidden');
-            document.getElementById('productsView').classList.remove('hidden');
-            displayProducts(lang);
+            document.getElementById('languageSelector').classList.add('hidden');
+            document.getElementById('productSelector').classList.remove('hidden');
+            document.getElementById('productSelectorTitle').textContent = translations[lang].title;
+            displayProducts();
         }
 
-        function backToLanguages() {
-            document.getElementById('productsView').classList.add('hidden');
-            document.getElementById('languageSelection').classList.remove('hidden');
-        }
-
-        function displayProducts(lang) {
-            const grid = document.getElementById('productsGrid');
+        function displayProducts() {
+            const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
-            
-            products[lang].forEach((product, index) => {
+            allProducts.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
-                card.onclick = () => toggleDetails(index);
-                
-                card.innerHTML = `
-                    <div class="product-header">
-                        <div class="product-info-text">
-                            <h3>${product.name}</h3>
-                            <span class="product-category">${product.category}</span>
-                        </div>
-                        <img src="${product.image}" alt="${product.name}" class="product-thumbnail">
-                    </div>
-                    <div class="product-details" id="details-${index}">
-                        <div class="info-section">
-                            <h4>${lang === 'fr' ? 'Ingrédients' : lang === 'es' ? 'Ingredientes' : lang === 'it' ? 'Ingredienti' : lang === 'de' ? 'Zutaten' : lang === 'pt' ? 'Ingredientes' : 'Ingredients'}</h4>
-                            <p>${product.ingredients}</p>
-                        </div>
-                        <div class="info-section">
-                            <h4>${lang === 'fr' ? 'Valeurs Nutritionnelles' : lang === 'es' ? 'Valores Nutricionales' : lang === 'it' ? 'Valori Nutrizionali' : lang === 'de' ? 'Nährwerte' : lang === 'pt' ? 'Valores Nutricionais' : 'Nutritional Info'}</h4>
-                            <p>${product.nutrition}</p>
-                        </div>
-                        <div class="info-section">
-                            <h4>${lang === 'fr' ? 'Recyclage' : lang === 'es' ? 'Reciclaje' : lang === 'it' ? 'Riciclaggio' : lang === 'de' ? 'Recycling' : lang === 'pt' ? 'Reciclagem' : 'Recycling'}</h4>
-                            <p>${product.recycling}</p>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Contact</h4>
-                            <p><strong>Email:</strong> <a href="mailto:${product.contact.email}">${product.contact.email}</a></p>
-                            <p><strong>Web:</strong> <a href="https://${product.contact.web}" target="_blank">${product.contact.web}</a></p>
-                        </div>
-                    </div>
-                `;
-                
+                card.onclick = () => showProductInfo(product.id);
+                card.innerHTML = `<div><h3>${product.name[currentLanguage]}</h3><p>${product.size}</p></div>`;
                 grid.appendChild(card);
             });
         }
 
-        function toggleDetails(index) {
-            const details = document.getElementById(`details-${index}`);
-            const allDetails = document.querySelectorAll('.product-details');
+        function showProductInfo(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            const details = productDetails[productId][currentLanguage];
+            const t = translations[currentLanguage];
             
-            allDetails.forEach((detail, i) => {
-                if (i !== index) {
-                    detail.classList.remove('active');
-                }
-            });
+            document.getElementById('productSelector').classList.add('hidden');
+            document.getElementById('productInfo').classList.remove('hidden');
             
-            details.classList.toggle('active');
-            
-            if (details.classList.contains('active')) {
-                const productName = products[currentLanguage][index].name;
-                trackProductView(productName, currentLanguage);
-            }
+            document.getElementById('productContent').innerHTML = `
+                <h2>${product.name[currentLanguage]} (${product.size})</h2>
+                <p>${details.desc}</p>
+                <h3>${t.nutritionalInfo}</h3>
+                <p><strong>${t.per100ml}:</strong> ${details.nutr.per100}</p>
+                <p><strong>${t.perBottle}:</strong> ${details.nutr.perBottle}</p>
+                <h3>${t.ingredients}</h3>
+                <p>${details.ingr}</p>
+                <h3>${t.warnings}</h3>
+                <p>${details.warn}</p>
+            `;
+        }
+
+        function backToLanguages() {
+            document.getElementById('productSelector').classList.add('hidden');
+            document.getElementById('languageSelector').classList.remove('hidden');
+        }
+
+        function backToProducts() {
+            document.getElementById('productInfo').classList.add('hidden');
+            document.getElementById('productSelector').classList.remove('hidden');
         }
     </script>
 </body>
